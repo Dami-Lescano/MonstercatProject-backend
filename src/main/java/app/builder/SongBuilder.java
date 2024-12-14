@@ -3,6 +3,7 @@ package app.builder;
 import java.time.LocalDate;
 
 import app.enumerate.Genre;
+import app.model.Converter;
 import app.model.Song;
 
 public class SongBuilder {
@@ -19,7 +20,7 @@ public class SongBuilder {
 	}
 	
 	public SongBuilder withLength(int minutes, int seconds) {
-		int length = convertLengthToInteger(minutes, seconds);
+		int length = Converter.lengthToInt(minutes, seconds);
 		this.song.setLength(length);
 		return this;
 	}
@@ -48,7 +49,4 @@ public class SongBuilder {
 		return this.song;
 	}
 	
-	public Integer convertLengthToInteger(int minutes, int seconds) {
-		return minutes * 60 + seconds;
-	}
 }
