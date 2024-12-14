@@ -10,9 +10,13 @@ public class Song {
 	private String title;
 	private LocalDate releaseDate;
 	private Genre genre = Genre.UNKNOWN;
-	//private String subGenre;
+	//private SubGenre subGenre;
 	private Integer length = 0;
 	private String catalogNumber;
+	
+	public String getLengthInString() {
+		return Converter.intToLength(this.length);
+	}
 	
 	//getters y setters
 	public Integer getSongId() {
