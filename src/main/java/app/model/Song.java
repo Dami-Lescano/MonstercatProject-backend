@@ -2,9 +2,19 @@ package app.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+//import javax.validation.constraints.NotNull;
+
 import app.enumerate.Genre;
 
+@Entity
 public class Song {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer songId;
 	
 	private String title;
