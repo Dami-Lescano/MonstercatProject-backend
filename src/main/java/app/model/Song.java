@@ -2,22 +2,25 @@ package app.model;
 
 import java.time.LocalDate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-//import javax.validation.constraints.NotNull;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import app.enumerate.Genre;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class Song {
+	
+	protected static final String DATE_PATTERN = "yyyy-MM-dd";
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer songId;
 	
 	private String title;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_PATTERN)
 	private LocalDate releaseDate;
 	private Genre genre = Genre.UNKNOWN;
 	//private SubGenre subGenre;
