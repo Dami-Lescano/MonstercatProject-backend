@@ -9,13 +9,13 @@ import org.springframework.stereotype.Service;
 import app.builder.SongBuilder;
 import app.enumerate.Genre;
 import app.model.Song;
-import app.service.SongService;
+import app.repository.SongRepository;
 
 @Service
 class MonstercatBootstrap implements InitializingBean {
 	
 	@Autowired
-	private SongService songService;
+	private SongRepository songRepository;
 	
 	private Song flight;
 	private Song dubstepKilledRockAndRoll;
@@ -23,8 +23,9 @@ class MonstercatBootstrap implements InitializingBean {
 	
 	private void initSongs() {
 		
+		System.out.println("Bootstrap");
+		
 		flight = new SongBuilder()
-				.withSongId(2)
 				.withTitle("Flight")
 				.withGenre(Genre.DRUMSTEP)
 				.withLength(3, 39)
@@ -33,7 +34,6 @@ class MonstercatBootstrap implements InitializingBean {
 				.buildSong();
 		
 		dubstepKilledRockAndRoll = new SongBuilder()
-				.withSongId(1)
 				.withTitle("Dubstep Killed Rock 'n' Roll")
 				.withGenre(Genre.DUBSTEP)
 				.withLength(4, 20)
@@ -42,7 +42,6 @@ class MonstercatBootstrap implements InitializingBean {
 				.buildSong();
 		
 		words = new SongBuilder()
-				.withSongId(3)
 				.withTitle("Words")
 				.withGenre(Genre.DRUM_AND_BASS)
 				.withLength(4, 36)
@@ -50,9 +49,9 @@ class MonstercatBootstrap implements InitializingBean {
 				.withCatalogNumber("MCS502")
 				.buildSong();
 		
-		songService.save(dubstepKilledRockAndRoll);
-		songService.save(flight);
-		songService.save(words);
+		songRepository.save(dubstepKilledRockAndRoll);
+		songRepository.save(flight);
+		songRepository.save(words);
 	}
 	
 	@Override

@@ -1,9 +1,11 @@
 package app.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import app.exception.exceptions.EntityNotFoundException;
 //import app.exception.exceptions.EntityNotFoundException;
 import app.repository.GenericRepository;
 
@@ -28,7 +30,7 @@ public abstract class GenericService<T> {
 		return this.repository.findAll();
 	}
     
-    /*public T findById(Long id) {
+    public T findById(Integer id) {
     	Optional<T> entity = this.repository.findById(id);
     	
     	if(!entity.isPresent())
@@ -37,7 +39,7 @@ public abstract class GenericService<T> {
 		return entity.get();
 	}
 
-	public void deleteById(Long id) {
+	public void deleteById(Integer id) {
 		this.repository.deleteById(id);
-	}*/
+	}
 }
