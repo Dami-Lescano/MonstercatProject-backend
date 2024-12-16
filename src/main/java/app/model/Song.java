@@ -9,6 +9,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Song {
@@ -19,12 +21,14 @@ public class Song {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer songId;
 	
+	@NotBlank(message = "La canción debe tener un título.")
 	private String title;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_PATTERN)
 	private LocalDate releaseDate;
 	private Genre genre = Genre.UNKNOWN;
 	//private SubGenre subGenre;
-	private Integer length = 0;
+	@NotNull(message = "La canción debe tener una duración.")
+	private Integer length;
 	private String catalogNumber;
 	
 	public String getLengthInString() {

@@ -34,7 +34,7 @@ public abstract class GenericService<T> {
     	Optional<T> entity = this.repository.findById(id);
     	
     	if(!entity.isPresent())
-    		throw new EntityNotFoundException(" El usuario con id: " + id + " no se encuentra en el sistema. ");
+    		throw new EntityNotFoundException(" El elemento con id: " + id + " no se encuentra en el sistema.");
     	
 		return entity.get();
 	}
