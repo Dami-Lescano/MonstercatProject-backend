@@ -7,7 +7,8 @@ public enum Genre {
 	UNKNOWN("Unknown", "#000000"),
 	DRUM_AND_BASS("Drum & Bass", "#F21904"),
 	DRUMSTEP("Drumstep", "F32188"),
-	DUBSTEP("Dubstep","#8D04E1");
+	DUBSTEP("Dubstep","#8D04E1"),
+	MOOMBAHTON("Moombahton","#0B9757");
 	
 	private String nombre;
     private String hexColor;
