@@ -1,6 +1,8 @@
 package app.model;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -9,7 +11,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
@@ -23,8 +28,20 @@ public class Song {
 	
 	@NotBlank(message = "La canción debe tener un título.")
 	private String title;
+	
+	@NotNull(message = "La canción debe tener una fecha de lanzamiento")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_PATTERN)
 	private LocalDate releaseDate;
+
+	@OneToMany
+	//@JoinColumn(name = "artists")
+	@NotEmpty(message = "Debe tener por lo menos un artista.")
+	private Set<Artist> artists = new HashSet<Artist>();
+	
+	@OneToMany
+	//@JoinColumn(name = "featuredArtists")
+	private Set<Artist> featuredArtists = new HashSet<Artist>();
+
 	private Genre genre = Genre.UNKNOWN;
 	//private SubGenre subGenre;
 	@NotNull(message = "La canción debe tener una duración.")
@@ -58,6 +75,22 @@ public class Song {
 	
 	public void setReleaseDate(LocalDate releaseDate) {
 		this.releaseDate = releaseDate;
+	}
+	
+	public Set<Artist> getArtists() {
+		return artists;
+	}
+
+	public void setArtists(Set<Artist> artists) {
+		this.artists = artists;
+	}
+	
+	public Set<Artist> getFeaturedArtists() {
+		return featuredArtists;
+	}
+
+	public void setFeaturedArtists(Set<Artist> artists) {
+		this.featuredArtists = artists;
 	}
 	
 	public Genre getGenre() {

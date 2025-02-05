@@ -1,8 +1,10 @@
 package app.builder;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 import app.enumerate.Genre;
+import app.model.Artist;
 import app.model.Converter;
 import app.model.Song;
 
@@ -16,6 +18,16 @@ public class SongBuilder {
 	
 	public SongBuilder withTitle(String title) {
 		this.song.setTitle(title);
+		return this;
+	}
+	
+	public SongBuilder withArtists(Set<Artist> artists) {
+		this.song.setArtists(artists);
+		return this;
+	}
+	
+	public SongBuilder withFeaturedArtists(Set<Artist> featuredArtists) {
+		this.song.setArtists(featuredArtists);
 		return this;
 	}
 	

@@ -15,4 +15,10 @@ public class SongService extends GenericService<Song>{
 		this.songRepository = repository;
 	}
 	
+	
+	public Song findById(Integer id) {
+		Song song = songRepository.findBySongId(id);
+		return song;
+	}
+	
 }

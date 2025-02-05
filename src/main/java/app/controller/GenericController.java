@@ -46,7 +46,7 @@ public abstract class GenericController<T> {
     @PutMapping
     public ResponseEntity<String> update(@RequestBody T entity) {
     	this.service.update(entity);
-
+    	// TODO: pasar id por pathvariabley usar dto
 		return ResponseEntity.ok("Updated");
     }
 
