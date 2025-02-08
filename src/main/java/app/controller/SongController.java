@@ -12,11 +12,11 @@ import app.service.SongService;
 @RequestMapping("/api/song")
 public class SongController extends GenericController<Song> {
 
-	private SongService consumerService;
+	private SongService songService;
 	
 	protected SongController(SongService service) {
 		super(service);
-		this.consumerService = service;
+		this.songService = service;
 	}
 }
 
