@@ -27,7 +27,7 @@ public class SongBuilder {
 	}
 	
 	public SongBuilder withFeaturedArtists(Set<Artist> featuredArtists) {
-		this.song.setArtists(featuredArtists);
+		this.song.setFeaturedArtists(featuredArtists);
 		return this;
 	}
 	
