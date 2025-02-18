@@ -1,31 +1,19 @@
 package app.service;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import app.exception.exceptions.EntityNotFoundException;
 //import app.exception.exceptions.EntityNotFoundException;
-//import app.repository.GenericRepository;
+import app.repository.GenericRepository;
 
 public abstract class GenericService<T> {
 	
-	//protected GenericRepository<T> repository;
+	protected GenericRepository<T> repository;
 	
-	protected List<T> genericRepository = new ArrayList<T>();
-	
-	public void save(T entity) {
-    	this.genericRepository.add(entity);
-    }
-	
-	public List<T> findAll() {
-		return this.genericRepository;
-	}
-	
-	/*@Autowired
+	@Autowired
 	protected GenericService(GenericRepository<T> repository) {
 		this.repository = repository;
 	}
@@ -42,16 +30,16 @@ public abstract class GenericService<T> {
 		return this.repository.findAll();
 	}
     
-    public T findById(Long id) {
+    public T findById(Integer id) {
     	Optional<T> entity = this.repository.findById(id);
     	
     	if(!entity.isPresent())
-    		throw new EntityNotFoundException(" El usuario con id: " + id + " no se encuentra en el sistema. ");
+    		throw new EntityNotFoundException(" El elemento con id: " + id + " no se encuentra en el sistema.");
     	
 		return entity.get();
 	}
 
-	public void deleteById(Long id) {
+	public void deleteById(Integer id) {
 		this.repository.deleteById(id);
-	}*/
+	}
 }

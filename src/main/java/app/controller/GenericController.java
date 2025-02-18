@@ -29,12 +29,12 @@ public abstract class GenericController<T> {
 		return ResponseEntity.ok(list);
 	}
     
-    /*@GetMapping("/{id}")
-    public ResponseEntity<T> findById(@PathVariable Long id) {
+    @GetMapping("/{id}")
+    public ResponseEntity<T> findById(@PathVariable Integer id) {
 		T entity = this.service.findById(id);
 		
 		return ResponseEntity.ok(entity);
-	}*/
+	}
     
     @PostMapping
     public ResponseEntity<String> create(@RequestBody T entity) {
@@ -43,17 +43,17 @@ public abstract class GenericController<T> {
         return ResponseEntity.ok("Created");
     }
 
-    /*@PutMapping
+    @PutMapping
     public ResponseEntity<String> update(@RequestBody T entity) {
     	this.service.update(entity);
-
+    	// TODO: pasar id por pathvariabley usar dto
 		return ResponseEntity.ok("Updated");
     }
 
     @DeleteMapping("/{id}")
-	public ResponseEntity<String> delete(@PathVariable Long id) {
+	public ResponseEntity<String> delete(@PathVariable Integer id) {
 		this.service.deleteById(id);
 
 		return ResponseEntity.ok("Deleted");
-	}*/
+	}
 }

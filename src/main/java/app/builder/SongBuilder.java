@@ -1,8 +1,11 @@
 package app.builder;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 import app.enumerate.Genre;
+import app.model.Artist;
+import app.model.Converter;
 import app.model.Song;
 
 public class SongBuilder {
@@ -18,8 +21,18 @@ public class SongBuilder {
 		return this;
 	}
 	
+	public SongBuilder withArtists(Set<Artist> artists) {
+		this.song.setArtists(artists);
+		return this;
+	}
+	
+	public SongBuilder withFeaturedArtists(Set<Artist> featuredArtists) {
+		this.song.setFeaturedArtists(featuredArtists);
+		return this;
+	}
+	
 	public SongBuilder withLength(int minutes, int seconds) {
-		int length = convertLengthToInteger(minutes, seconds);
+		int length = Converter.lengthToInt(minutes, seconds);
 		this.song.setLength(length);
 		return this;
 	}
@@ -48,7 +61,4 @@ public class SongBuilder {
 		return this.song;
 	}
 	
-	public Integer convertLengthToInteger(int minutes, int seconds) {
-		return minutes * 60 + seconds;
-	}
 }
