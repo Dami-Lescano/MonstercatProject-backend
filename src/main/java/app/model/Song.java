@@ -11,7 +11,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
@@ -34,12 +33,10 @@ public class Song {
 	private LocalDate releaseDate;
 
 	@OneToMany
-	//@JoinColumn(name = "artists")
 	@NotEmpty(message = "Debe tener por lo menos un artista.")
 	private Set<Artist> artists = new HashSet<Artist>();
 	
 	@OneToMany
-	//@JoinColumn(name = "featuredArtists")
 	private Set<Artist> featuredArtists = new HashSet<Artist>();
 
 	private Genre genre = Genre.UNKNOWN;
