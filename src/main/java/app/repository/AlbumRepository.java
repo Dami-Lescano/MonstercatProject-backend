@@ -10,4 +10,7 @@ public interface AlbumRepository extends GenericRepository<Album>{
 	
 	@EntityGraph(attributePaths = { "songs.artists", "songs.featuredArtists" })
 	public List<Album> findAll();
+	
+	@EntityGraph(attributePaths = { "songs.artists", "songs.featuredArtists" })
+	public Album findByAlbumId(Integer id);
 }

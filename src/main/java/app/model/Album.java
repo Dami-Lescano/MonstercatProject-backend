@@ -1,7 +1,9 @@
 package app.model;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -23,7 +25,7 @@ public abstract class Album {
 	
 	private String title;
 	@OneToMany
-	private Set<Song> songs = new HashSet<Song>();
+	private Map<Integer, Song> songs = new HashMap<Integer, Song>();
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_PATTERN)
 	private LocalDate releaseDate;
 	private String catalogNumber;
@@ -40,10 +42,10 @@ public abstract class Album {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public Set<Song> getSongs() {
+	public Map<Integer, Song> getSongs() {
 		return songs;
 	}
-	public void setSongs(Set<Song> songs) {
+	public void setSongs(Map<Integer, Song> songs) {
 		this.songs = songs;
 	}
 	public LocalDate getReleaseDate() {
@@ -57,5 +59,10 @@ public abstract class Album {
 	}
 	public void setCatalogNumber(String catalogNumber) {
 		this.catalogNumber = catalogNumber;
+	}
+	
+	public void addSong(Song newSong) {
+		var position = this.songs.size() + 1;
+		songs.put(position, newSong);
 	}
 }

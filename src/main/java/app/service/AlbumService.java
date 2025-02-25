@@ -13,4 +13,9 @@ public class AlbumService extends GenericService<Album>{
 		super(repository);
 		this.albumRepository = repository;
 	}
+	
+	public Album findById(Integer id) {
+		Album album = albumRepository.findByAlbumId(id);
+		return album;
+	}
 }

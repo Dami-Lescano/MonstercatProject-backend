@@ -3,6 +3,7 @@ package app;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -44,7 +45,7 @@ class MonstercatBootstrap implements InitializingBean {
 	//Compilatons list
 	private Set<CompilationAlbum> compilationAlbums;
 	
-	//Artists
+	//Artists          private Artist x;
 	private Artist ephixa;
 	private Artist haloNova;
 	private Artist stephenWalking;
@@ -52,6 +53,15 @@ class MonstercatBootstrap implements InitializingBean {
 	private Artist goingQuantum;
 	private Artist feint;
 	private Artist neilio;
+	
+	private Artist fiveteenGrams;
+	private Artist eminence;
+	private Artist matduke;
+	private Artist noisestorm;
+	private Artist obsidia;
+	private Artist projectFortySix;
+	private Artist twoThirds;
+	private Artist matthewSartori;
 	
 	//Songs
 	
@@ -243,19 +253,17 @@ class MonstercatBootstrap implements InitializingBean {
 		
 		launchWeek = new CompilationAlbumBuilder()
 				.withTitle("Launch Week")
-				.withSongs(new HashSet<Song>(Arrays.asList(
-						coldBloodAndIceCreamCones,
-						atlas,
-						dubstepKilledRockAndRoll,
-						hello,
-						theForce,
-						captivating,
-						stillWalking
-					)))
 				.withReleaseDate(LocalDate.of(2011, 7, 12))
 				.withCompilationType(CompilatonType.MONSTERCAT_COMPILATION)
 				.withCatalogNumber("MC001")
 				.build();
+		launchWeek.addSong(coldBloodAndIceCreamCones);
+		launchWeek.addSong(atlas);
+		launchWeek.addSong(dubstepKilledRockAndRoll);
+		launchWeek.addSong(hello);
+		launchWeek.addSong(theForce);
+		launchWeek.addSong(captivating);
+		launchWeek.addSong(stillWalking);
 		compilationAlbums.add(launchWeek);
 		
 		albumRepository.saveAll(compilationAlbums);

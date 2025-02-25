@@ -1,6 +1,7 @@
 package app.builder;
 
 import java.time.LocalDate;
+import java.util.Map;
 import java.util.Set;
 
 import app.enumerate.CompilatonType;
@@ -24,7 +25,7 @@ public class CompilationAlbumBuilder {
 		return this;
 	}
 	
-	public CompilationAlbumBuilder withSongs(Set<Song> songs) {
+	public CompilationAlbumBuilder withSongs(Map<Integer, Song> songs) {
 		this.compilationAlbum.setSongs(songs);
 		return this;
 	}

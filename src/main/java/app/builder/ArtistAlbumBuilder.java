@@ -1,6 +1,7 @@
 package app.builder;
 
 import java.time.LocalDate;
+import java.util.Map;
 import java.util.Set;
 
 import app.model.Artist;
@@ -24,7 +25,7 @@ public class ArtistAlbumBuilder {
 		return this;
 	}
 	
-	public ArtistAlbumBuilder withSongs(Set<Song> songs) {
+	public ArtistAlbumBuilder withSongs(Map<Integer, Song> songs) {
 		this.artistAlbum.setSongs(songs);
 		return this;
 	}
