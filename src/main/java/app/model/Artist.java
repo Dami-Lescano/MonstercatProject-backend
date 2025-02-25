@@ -28,7 +28,7 @@ public class Artist {
 	private String country;
 	
 	@NotBlank(message = "El año de inicio no debe estar vacío.")
-	private String initYear;
+	private String initYear = "Desconocido";
 	//@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_PATTERN)
 	private String endYear = null;
 	
