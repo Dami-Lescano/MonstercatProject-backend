@@ -5,7 +5,11 @@ public abstract class Converter {
 	public static String intToLength(int length) {
 		Integer minutes = length / 60;
 		Integer seconds = length % 60;
-		return minutes.toString().concat(":").concat(seconds.toString());
+		String secondsString = seconds.toString();
+		if (seconds < 10) {
+			secondsString = "0".concat(secondsString);
+		}
+		return minutes.toString().concat(":").concat(secondsString);
 	}
 	
 	public static Integer lengthToInt(int minutes, int seconds) {
