@@ -7,4 +7,6 @@ import app.model.Artist;
 @Repository
 public interface ArtistRepository extends GenericRepository<Artist> {
 
+	public Artist findByArtistName(String name);
+
 }

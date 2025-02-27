@@ -15,4 +15,10 @@ public interface SongRepository extends GenericRepository<Song> {
 	
 	@EntityGraph(attributePaths = { "artists", "featuredArtists" })
 	public List<Song> findAll();
+	
+	@EntityGraph(attributePaths = { "artists", "featuredArtists" })
+	public List<Song> findAllByArtistsArtistId(Integer artistId);
+	
+	@EntityGraph(attributePaths = { "artists", "featuredArtists" })
+	public List<Song> findAllByFeaturedArtistsArtistId(Integer artistId);
 }

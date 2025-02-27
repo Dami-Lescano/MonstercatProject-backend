@@ -1,5 +1,7 @@
 package app.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import app.model.Song;
@@ -19,6 +21,10 @@ public class SongService extends GenericService<Song>{
 	public Song findById(Integer id) {
 		Song song = songRepository.findBySongId(id);
 		return song;
+	}
+	
+	public List<Song> findByArtist(Integer artistId){
+		return songRepository.findAllByArtistsArtistId(artistId);
 	}
 	
 }
