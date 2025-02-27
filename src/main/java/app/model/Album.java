@@ -65,4 +65,9 @@ public abstract class Album {
 		var position = this.songs.size() + 1;
 		songs.put(position, newSong);
 	}
+	
+	public String getLength() {
+		var lengthSum = this.songs.values().stream().mapToInt(s -> s.getLength()).sum();
+		return Converter.intToLength(lengthSum);
+	}
 }
