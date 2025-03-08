@@ -67,7 +67,12 @@ public abstract class Album {
 	}
 	
 	public String getLength() {
-		var lengthSum = this.songs.values().stream().mapToInt(s -> s.getLength()).sum();
+		int lengthSum = this.songs.values().stream().mapToInt(s -> s.getLength()).sum();
 		return Converter.intToLength(lengthSum);
+	}
+	
+	public int getNumberOfSongs() {
+		var count = this.songs.size();
+		return count;
 	}
 }
