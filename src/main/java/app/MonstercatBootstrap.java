@@ -61,6 +61,12 @@ class MonstercatBootstrap implements InitializingBean {
 	private Artist twoThirds;
 	private Artist matthewSartori;
 	
+	private Artist alexFarway;
+	private Artist hellberg;
+	private Artist metzen;
+	private Artist mrFijiWiji;
+	private Artist varien;
+	
 	//Songs		private Song x;
 	
 	//001 - Launch Week
@@ -89,9 +95,27 @@ class MonstercatBootstrap implements InitializingBean {
 	private Song triceracops;
 	private Song theBassex;
 	
+	//003 - Momentum
+	private Song shivers;
+	private Song limitless;
+	private Song belgium;
+	private Song android;
+	private Song topOfTheWorld;
+	private Song stockholm;
+	private Song division;
+	private Song theTechnician;
+	private Song insomnia;
+	private Song fullGrizzly;
+	private Song formless;
+	private Song fullFocus;
+	private Song slide;
+	private Song elementsOfSanity;
+	private Song cloakAndDagger;
+	
 	//Monstercat Compilations		private CompilationAlbum x;
 	private CompilationAlbum launchWeek;
 	private CompilationAlbum earlyStage;
+	private CompilationAlbum momentum;
 	
 	/*future songs
 	private Song flight;
@@ -225,6 +249,49 @@ class MonstercatBootstrap implements InitializingBean {
 				.withCountry("Canadá")
 				.build();
 		artists.add(matthewSartori);
+		
+		//003 - Momentum
+		
+		alexFarway = new ArtistBuilder()
+				.withArtistName("Alex Farway")
+				.withRealName(new ArrayList<String>(Arrays.asList("Alexandre Douste")))
+				.withCountry("Canadá")
+				.build();
+		artists.add(alexFarway);
+		
+		hellberg = new ArtistBuilder()
+				.withArtistName("Hellberg")
+				.withRealName(new ArrayList<String>(Arrays.asList("Jonathan Sven Thomas Hellberg")))
+				.withCountry("Suecia")
+				.withInitYear("2011")
+				.withEndYear("2022")
+				.build();
+		artists.add(hellberg);
+		
+		metzen = new ArtistBuilder()
+				.withArtistName("Metzen")
+				.withRealName(new ArrayList<String>(Arrays.asList("Mark")))
+				.withCountry("Canadá")
+				.build();
+		artists.add(metzen);
+		
+		mrFijiWiji = new ArtistBuilder()
+				.withArtistName("Mr FijiWiji")
+				.withRealName(new ArrayList<String>(Arrays.asList("Brendan Matthew Galdo")))
+				.withCountry("Estados Unidos")
+				.withInitYear("2011")
+				.build();
+		artists.add(mrFijiWiji);
+		
+		varien = new ArtistBuilder()
+				.withArtistName("Varien")
+				.withRealName(new ArrayList<String>(Arrays.asList("Nikki Kaelar")))
+				.withBirthDate(LocalDate.of(1990, 5, 15))
+				.withCountry("Estados Unidos")
+				.withInitYear("2011")
+				.build();
+		artists.add(varien);
+		
 		/*
 		artist = new ArtistBuilder()
 				.withArtistName("x")
@@ -448,19 +515,155 @@ class MonstercatBootstrap implements InitializingBean {
 				.buildSong();
 		songs.add(theBassex);
 		
+		//003 - Momentum
+		
+		shivers = new SongBuilder()
+				.withTitle("Shivers")
+				.withArtists(new HashSet<Artist>(Arrays.asList(matduke, metzen)))
+				.withGenre(Genre.HARD_DANCE)
+				.withLength(4, 45)
+				.withReleaseDate(LocalDate.of(2011, 10, 4))
+				.buildSong();
+		songs.add(shivers);
+		
+		limitless = new SongBuilder()
+				.withTitle("Limitless")
+				.withArtists(new HashSet<Artist>(Arrays.asList(projectFortySix)))
+				.withGenre(Genre.HOUSE)
+				.withLength(7, 0)
+				.withReleaseDate(LocalDate.of(2011, 10, 6))
+				.buildSong();
+		songs.add(limitless);
+		
+		belgium = new SongBuilder()
+				.withTitle("Belgium")
+				.withArtists(new HashSet<Artist>(Arrays.asList(eminence, alexFarway)))
+				.withGenre(Genre.TRANCE)
+				.withLength(6, 44)
+				.withReleaseDate(LocalDate.of(2011, 10, 8))
+				.buildSong();
+		songs.add(belgium);
+		
+		android = new SongBuilder()
+				.withTitle("Android")
+				.withArtists(new HashSet<Artist>(Arrays.asList(obsidia)))
+				.withGenre(Genre.DUBSTEP)
+				.withLength(5, 9)
+				.withReleaseDate(LocalDate.of(2011, 10, 10))
+				.buildSong();
+		songs.add(android);
+		
+		topOfTheWorld = new SongBuilder()
+				.withTitle("Top of the World")
+				.withArtists(new HashSet<Artist>(Arrays.asList(stephenWalking)))
+				.withGenre(Genre.ELECTRO)
+				.withLength(3, 0)
+				.withReleaseDate(LocalDate.of(2011, 10, 12))
+				.buildSong();
+		songs.add(topOfTheWorld);
+		
+		stockholm = new SongBuilder()
+				.withTitle("Stockholm")
+				.withArtists(new HashSet<Artist>(Arrays.asList(hellberg)))
+				.withGenre(Genre.HOUSE)
+				.withLength(4, 20)
+				.withReleaseDate(LocalDate.of(2011, 10, 14))
+				.buildSong();
+		songs.add(stockholm);
+		
+		division = new SongBuilder()
+				.withTitle("Division")
+				.withArtists(new HashSet<Artist>(Arrays.asList(ephixa)))
+				.withGenre(Genre.DUBSTEP)
+				.withLength(6, 10)
+				.withReleaseDate(LocalDate.of(2011, 10, 19))
+				.buildSong();
+		songs.add(division);
+		
+		theTechnician = new SongBuilder()
+				.withTitle("The Technician")
+				.withArtists(new HashSet<Artist>(Arrays.asList(matduke)))
+				.withRemixers(new HashSet<Artist>(Arrays.asList(neilio)))
+				.withGenre(Genre.HARD_DANCE)
+				.withLength(5, 30)
+				.withReleaseDate(LocalDate.of(2011, 10, 17))
+				.buildSong();
+		songs.add(theTechnician);
+		
+		insomnia = new SongBuilder()
+				.withTitle("Insomnia")
+				.withArtists(new HashSet<Artist>(Arrays.asList(mrFijiWiji)))
+				.withGenre(Genre.DUBSTEP)
+				.withLength(3, 18)
+				.withReleaseDate(LocalDate.of(2011, 10, 21))
+				.buildSong();
+		songs.add(insomnia);
+		
+		fullGrizzly = new SongBuilder()
+				.withTitle("Full Grizzly")
+				.withArtists(new HashSet<Artist>(Arrays.asList(goingQuantum, stephenWalking)))
+				.withGenre(Genre.DUBSTEP)
+				.withLength(3, 32)
+				.withReleaseDate(LocalDate.of(2011, 10, 26))
+				.buildSong();
+		songs.add(fullGrizzly);
+		
+		formless = new SongBuilder()
+				.withTitle("Formless")
+				.withArtists(new HashSet<Artist>(Arrays.asList(feint)))
+				.withGenre(Genre.DRUMSTEP)
+				.withLength(4, 35)
+				.withReleaseDate(LocalDate.of(2011, 10, 28))
+				.buildSong();
+		songs.add(formless);
+		
+		fullFocus = new SongBuilder()
+				.withTitle("Full Focus")
+				.withArtists(new HashSet<Artist>(Arrays.asList(noisestorm)))
+				.withGenre(Genre.DRUMSTEP)
+				.withLength(3, 57)
+				.withReleaseDate(LocalDate.of(2011, 10, 24))
+				.buildSong();
+		songs.add(fullFocus);
+		
+		slide = new SongBuilder()
+				.withTitle("Slide")
+				.withArtists(new HashSet<Artist>(Arrays.asList(projectFortySix)))
+				.withGenre(Genre.HOUSE)
+				.withLength(7, 3)
+				.withReleaseDate(LocalDate.of(2011, 11, 2))
+				.buildSong();
+		songs.add(slide);
+		
+		elementsOfSanity = new SongBuilder()
+				.withTitle("Elements of Sanity")
+				.withArtists(new HashSet<Artist>(Arrays.asList(arion)))
+				.withGenre(Genre.DUBSTEP)
+				.withLength(3, 48)
+				.withReleaseDate(LocalDate.of(2011, 11, 4))
+				.buildSong();
+		songs.add(elementsOfSanity);
+		
+		cloakAndDagger = new SongBuilder()
+				.withTitle("Cloak and Dagger")
+				.withArtists(new HashSet<Artist>(Arrays.asList(varien)))
+				.withGenre(Genre.DUBSTEP)
+				.withLength(4, 14)
+				.withReleaseDate(LocalDate.of(2011, 10, 31))
+				.buildSong();
+		songs.add(cloakAndDagger);
+		
 		songRepository.saveAll(songs);
 		
 		/*
 		song = new SongBuilder()
-				.withTitle("x")
-				.withArtists(new HashSet<Artist>(Arrays.asList(x...)))
-				.withFeaturedArtists(new HashSet<Artist>(Arrays.asList(x...)))
-				.withGenre(Genre.x)
-				.withLength(x, x)
-				.withReleaseDate(LocalDate.of(20xx, x, x))
-				.withCatalogNumber("MC"x)
+				.withTitle("")
+				.withArtists(new HashSet<Artist>(Arrays.asList()))
+				.withGenre(Genre.)
+				.withLength(, )
+				.withReleaseDate(LocalDate.of(20, , ))
 				.buildSong();
-		songs.add(x);
+		songs.add();
 		*/
 	}
 	
@@ -504,6 +707,29 @@ class MonstercatBootstrap implements InitializingBean {
 		earlyStage.addSong(triceracops);
 		earlyStage.addSong(theBassex);
 		compilationAlbums.add(earlyStage);
+		
+		momentum = new CompilationAlbumBuilder()
+				.withTitle("Momentum")
+				.withReleaseDate(LocalDate.of(2011, 11, 7))
+				.withCompilationType(CompilatonType.MONSTERCAT_COMPILATION)
+				.withCatalogNumber("MC003")
+				.build();
+		momentum.addSong(shivers);
+		momentum.addSong(limitless);
+		momentum.addSong(belgium);
+		momentum.addSong(android);
+		momentum.addSong(topOfTheWorld);
+		momentum.addSong(stockholm);
+		momentum.addSong(division);
+		momentum.addSong(theTechnician);
+		momentum.addSong(insomnia);
+		momentum.addSong(fullGrizzly);
+		momentum.addSong(formless);
+		momentum.addSong(fullFocus);
+		momentum.addSong(slide);
+		momentum.addSong(elementsOfSanity);
+		momentum.addSong(cloakAndDagger);
+		compilationAlbums.add(momentum);
 		
 		albumRepository.saveAll(compilationAlbums);
 		
