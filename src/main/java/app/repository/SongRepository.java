@@ -10,15 +10,15 @@ import app.model.Song;
 @Repository
 public interface SongRepository extends GenericRepository<Song> {
 	
-	@EntityGraph(attributePaths = { "artists", "featuredArtists" })
+	@EntityGraph(attributePaths = { "artists", "featuredArtists", "remixers" })
 	public Song findBySongId(Integer id);
 	
-	@EntityGraph(attributePaths = { "artists", "featuredArtists" })
+	@EntityGraph(attributePaths = { "artists", "featuredArtists", "remixers" })
 	public List<Song> findAll();
 	
-	@EntityGraph(attributePaths = { "artists", "featuredArtists" })
+	@EntityGraph(attributePaths = { "artists", "featuredArtists", "remixers" })
 	public List<Song> findAllByArtistsArtistId(Integer artistId);
 	
-	@EntityGraph(attributePaths = { "artists", "featuredArtists" })
+	@EntityGraph(attributePaths = { "artists", "featuredArtists", "remixers" })
 	public List<Song> findAllByFeaturedArtistsArtistId(Integer artistId);
 }

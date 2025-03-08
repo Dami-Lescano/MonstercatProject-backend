@@ -43,6 +43,9 @@ public class Song {
 	
 	@OneToMany
 	private Set<Artist> featuredArtists = new HashSet<Artist>();
+	
+	@OneToMany
+	private Set<Artist> remixers = new HashSet<Artist>();
 
 	private Genre genre = Genre.UNKNOWN;
 	//private SubGenre subGenre;
@@ -93,6 +96,14 @@ public class Song {
 
 	public void setFeaturedArtists(Set<Artist> artists) {
 		this.featuredArtists = artists;
+	}
+	
+	public Set<Artist> getremixers() {
+		return remixers;
+	}
+
+	public void setRemixers(Set<Artist> artists) {
+		this.remixers = artists;
 	}
 	
 	public Genre getGenre() {
