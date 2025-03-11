@@ -30,7 +30,6 @@ public class Artist {
 	
 	private Country country = Country.UNKNOWN;
 	
-	@NotBlank(message = "El año de inicio no debe estar vacío.")
 	private Integer initYear = null;
 	private Integer endYear = null;
 	
