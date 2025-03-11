@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import app.enumerate.Country;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,12 +26,13 @@ public class Artist {
 	private List<String> realName;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_PATTERN)
 	private LocalDate birthDate;
-	private String country;
+	
+	
+	private Country country = Country.UNKNOWN;
 	
 	@NotBlank(message = "El año de inicio no debe estar vacío.")
-	private String initYear = "Desconocido";
-	//@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_PATTERN)
-	private String endYear = null;
+	private Integer initYear = null;
+	private Integer endYear = null;
 	
 	//getters y setters
 	public Integer getArtistId() {
@@ -57,22 +59,22 @@ public class Artist {
 	public void setBirthDate(LocalDate birthDate) {
 		this.birthDate = birthDate;
 	}
-	public String getCountry() {
+	public Country getCountry() {
 		return country;
 	}
-	public void setCountry(String country) {
+	public void setCountry(Country country) {
 		this.country = country;
 	}
-	public String getInitYear() {
+	public Integer getInitYear() {
 		return initYear;
 	}
-	public void setInitYear(String initYear) {
+	public void setInitYear(Integer initYear) {
 		this.initYear = initYear;
 	}
-	public String getEndYear() {
+	public Integer getEndYear() {
 		return endYear;
 	}
-	public void setEndYear(String endYear) {
+	public void setEndYear(Integer endYear) {
 		this.endYear = endYear;
 	}
 }

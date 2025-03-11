@@ -14,6 +14,7 @@ import app.builder.ArtistBuilder;
 import app.builder.CompilationAlbumBuilder;
 import app.builder.SongBuilder;
 import app.enumerate.CompilatonType;
+import app.enumerate.Country;
 import app.enumerate.Genre;
 import app.model.Artist;
 import app.model.CompilationAlbum;
@@ -66,6 +67,14 @@ class MonstercatBootstrap implements InitializingBean {
 	private Artist metzen;
 	private Artist mrFijiWiji;
 	private Artist varien;
+	
+	private Artist dotExe;
+	private Artist gemellini;
+	private Artist muzzy;
+	private Artist rezonate;
+	private Artist tristam;
+	private Artist yh;
+	private Artist corinneLee;
 	
 	//Songs		private Song x;
 	
@@ -132,8 +141,8 @@ class MonstercatBootstrap implements InitializingBean {
 				.withArtistName("Ephixa")
 				.withRealName(new ArrayList<String>(Arrays.asList("James Aurthur Leusink")))
 				.withBirthDate(LocalDate.of(1990, 4, 13))
-				.withCountry("Canadá")
-				.withInitYear("2008")
+				.withCountry(Country.CANADA)
+				.withInitYear(2008)
 				.build();
 		artists.add(ephixa);
 		
@@ -141,47 +150,47 @@ class MonstercatBootstrap implements InitializingBean {
 				.withArtistName("Halo Nova")
 				.withRealName(new ArrayList<String>(Arrays.asList("Nikki Kaelar")))
 				.withBirthDate(LocalDate.of(1990, 5, 15))
-				.withCountry("Estados Unidos")
-				.withInitYear("2011")
+				.withCountry(Country.UNITED_STATES)
+				.withInitYear(2011)
 				.build();
 		artists.add(haloNova);
 		
 		stephenWalking = new ArtistBuilder()
 				.withArtistName("Stephen Walking")
 				.withRealName(new ArrayList<String>(Arrays.asList("Michael Arthur Toope")))
-				.withCountry("Canadá")
-				.withInitYear("2010")
+				.withCountry(Country.CANADA)
+				.withInitYear(2010)
 				.build();
 		artists.add(stephenWalking);
 		
 		arion = new ArtistBuilder()
 				.withArtistName("Arion")
 				.withRealName(new ArrayList<String>(Arrays.asList("Arion Alijah Anderson")))
-				.withInitYear("2009")
+				.withInitYear(2009)
 				.build();
 		artists.add(arion);
 		
 		goingQuantum = new ArtistBuilder()
 				.withArtistName("Going Quantum")
 				.withRealName(new ArrayList<String>(Arrays.asList("Jonathan Winter")))
-				.withCountry("Canadá")
-				.withInitYear("2011")
+				.withCountry(Country.CANADA)
+				.withInitYear(2011)
 				.build();
 		artists.add(goingQuantum);
 		
 		feint = new ArtistBuilder()
 				.withArtistName("Feint")
 				.withRealName(new ArrayList<String>(Arrays.asList("Andrew Hu")))
-				.withCountry("Reino Unido")
-				.withInitYear("2011")
+				.withCountry(Country.UNITED_KINGDOM)
+				.withInitYear(2011)
 				.build();
 		artists.add(feint);
 		
 		neilio = new ArtistBuilder()
 				.withArtistName("Neilio")
 				.withRealName(new ArrayList<String>(Arrays.asList("Neil Patrick Burke")))
-				.withCountry("Irlanda")
-				.withInitYear("2011")
+				.withCountry(Country.IRELAND)
+				.withInitYear(2011)
 				.build();
 		artists.add(neilio);
 		
@@ -190,47 +199,47 @@ class MonstercatBootstrap implements InitializingBean {
 		fiveteenGrams = new ArtistBuilder()
 				.withArtistName("15grams")
 				.withRealName(new ArrayList<String>(Arrays.asList("Brendan Mosca")))
-				.withCountry("Australia")
+				.withCountry(Country.AUSTRALIA)
 				.build();
 		artists.add(fiveteenGrams);
 		
 		eminence = new ArtistBuilder()
 				.withArtistName("Eminence")
 				.withRealName(new ArrayList<String>(Arrays.asList("Mathew William Kenneth Kazmierowski", "Dillon Jun Ho Wong")))
-				.withCountry("Canadá")
-				.withInitYear("2010")
+				.withCountry(Country.CANADA)
+				.withInitYear(2010)
 				.build();
 		artists.add(eminence);
 		
 		matduke = new ArtistBuilder()
 				.withArtistName("Matduke")
 				.withRealName(new ArrayList<String>(Arrays.asList("Mathieu Giguère")))
-				.withCountry("Canadá")
-				.withInitYear("2008")
+				.withCountry(Country.CANADA)
+				.withInitYear(2008)
 				.build();
 		artists.add(matduke);
 		
 		noisestorm = new ArtistBuilder()
 				.withArtistName("Noisestorm")
 				.withRealName(new ArrayList<String>(Arrays.asList("Eoin Marc O' Broin")))
-				.withCountry("Irlanda")
-				.withInitYear("2010")
+				.withCountry(Country.IRELAND)
+				.withInitYear(2010)
 				.build();
 		artists.add(noisestorm);
 		
 		obsidia = new ArtistBuilder()
 				.withArtistName("Obsidia")
 				.withRealName(new ArrayList<String>(Arrays.asList("Domenic Ganley")))
-				.withCountry("Reino Unido")
-				.withInitYear("2010")
+				.withCountry(Country.UNITED_KINGDOM)
+				.withInitYear(2010)
 				.build();
 		artists.add(obsidia);
 		
 		projectFortySix = new ArtistBuilder()
 				.withArtistName("Project 46")
 				.withRealName(new ArrayList<String>(Arrays.asList("Thomas Edward Shaw", "Ryan Leonard Henderson")))
-				.withCountry("Canadá")
-				.withInitYear("2011")
+				.withCountry(Country.CANADA)
+				.withInitYear(2011)
 				.build();
 		artists.add(projectFortySix);
 		
@@ -238,15 +247,15 @@ class MonstercatBootstrap implements InitializingBean {
 				.withArtistName("TwoThirds")
 				.withRealName(new ArrayList<String>(Arrays.asList("Lewis Michael Dransfield")))
 				.withBirthDate(LocalDate.of(1993, 9, 13))
-				.withCountry("Reino Unido")
-				.withInitYear("2009")
+				.withCountry(Country.UNITED_KINGDOM)
+				.withInitYear(2009)
 				.build();
 		artists.add(twoThirds);
 		
 		matthewSartori = new ArtistBuilder()
 				.withArtistName("Matthew Sartori")
 				.withRealName(new ArrayList<String>(Arrays.asList("Matthew Sartori")))
-				.withCountry("Canadá")
+				.withCountry(Country.CANADA)
 				.build();
 		artists.add(matthewSartori);
 		
@@ -255,31 +264,31 @@ class MonstercatBootstrap implements InitializingBean {
 		alexFarway = new ArtistBuilder()
 				.withArtistName("Alex Farway")
 				.withRealName(new ArrayList<String>(Arrays.asList("Alexandre Douste")))
-				.withCountry("Canadá")
+				.withCountry(Country.CANADA)
 				.build();
 		artists.add(alexFarway);
 		
 		hellberg = new ArtistBuilder()
 				.withArtistName("Hellberg")
 				.withRealName(new ArrayList<String>(Arrays.asList("Jonathan Sven Thomas Hellberg")))
-				.withCountry("Suecia")
-				.withInitYear("2011")
-				.withEndYear("2022")
+				.withCountry(Country.SWEDEN)
+				.withInitYear(2011)
+				.withEndYear(2022)
 				.build();
 		artists.add(hellberg);
 		
 		metzen = new ArtistBuilder()
 				.withArtistName("Metzen")
 				.withRealName(new ArrayList<String>(Arrays.asList("Mark")))
-				.withCountry("Canadá")
+				.withCountry(Country.CANADA)
 				.build();
 		artists.add(metzen);
 		
 		mrFijiWiji = new ArtistBuilder()
 				.withArtistName("Mr FijiWiji")
 				.withRealName(new ArrayList<String>(Arrays.asList("Brendan Matthew Galdo")))
-				.withCountry("Estados Unidos")
-				.withInitYear("2011")
+				.withCountry(Country.UNITED_STATES)
+				.withInitYear(2011)
 				.build();
 		artists.add(mrFijiWiji);
 		
@@ -287,10 +296,20 @@ class MonstercatBootstrap implements InitializingBean {
 				.withArtistName("Varien")
 				.withRealName(new ArrayList<String>(Arrays.asList("Nikki Kaelar")))
 				.withBirthDate(LocalDate.of(1990, 5, 15))
-				.withCountry("Estados Unidos")
-				.withInitYear("2011")
+				.withCountry(Country.UNITED_STATES)
+				.withInitYear(2011)
 				.build();
 		artists.add(varien);
+		
+		//004 - Identity
+		
+		dotExe = new ArtistBuilder()
+				.withArtistName("DotEXE")
+				.withRealName(new ArrayList<String>(Arrays.asList("Scott Jackson Stanley")))
+				.withCountry(Country.UNITED_STATES)
+				.withInitYear(2010)
+				.build();
+		artists.add(dotExe);
 		
 		/*
 		artist = new ArtistBuilder()

@@ -3,6 +3,7 @@ package app.builder;
 import java.time.LocalDate;
 import java.util.List;
 
+import app.enumerate.Country;
 import app.model.Artist;
 
 public class ArtistBuilder {
@@ -28,7 +29,7 @@ public class ArtistBuilder {
 		return this;
 	}
 	
-	public ArtistBuilder withCountry(String country) {
+	public ArtistBuilder withCountry(Country country) {
 		this.artist.setCountry(country);
 		return this;
 	}
@@ -38,12 +39,12 @@ public class ArtistBuilder {
 		return this;
 	}
 	
-	public ArtistBuilder withEndYear(String endYear) {
+	public ArtistBuilder withEndYear(Integer endYear) {
 		this.artist.setEndYear(endYear);
 		return this;
 	}
 	
-	public ArtistBuilder withInitYear(String initYear) {
+	public ArtistBuilder withInitYear(Integer initYear) {
 		this.artist.setInitYear(initYear);
 		return this;
 	}
