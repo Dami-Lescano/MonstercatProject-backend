@@ -121,10 +121,28 @@ class MonstercatBootstrap implements InitializingBean {
 	private Song elementsOfSanity;
 	private Song cloakAndDagger;
 	
+	//004 - Identity
+	private Song deadline;
+	private Song theDestroyer;
+	private Song runAwayFromMe;
+	private Song oblivion;
+	private Song ridingTheStorm;
+	private Song crazy;
+	private Song partyForTheLiving;
+	private Song partTwo;
+	private Song strongArm;
+	private Song killItWithFire;
+	private Song spazzOut;
+	private Song stereo;
+	private Song audiocidity;
+	private Song outsideThisWorld;
+	private Song pumpIt;
+	
 	//Monstercat Compilations		private CompilationAlbum x;
 	private CompilationAlbum launchWeek;
 	private CompilationAlbum earlyStage;
 	private CompilationAlbum momentum;
+	private CompilationAlbum identity;
 	
 	/*future songs
 	private Song flight;
@@ -311,14 +329,63 @@ class MonstercatBootstrap implements InitializingBean {
 				.build();
 		artists.add(dotExe);
 		
+		gemellini = new ArtistBuilder()
+				.withArtistName("Gemellini")
+				.withRealName(new ArrayList<String>(Arrays.asList("Andrea Sartori", "Davide Sartori")))
+				.withCountry(Country.AUSTRALIA)
+				.withInitYear(2008)
+				.build();
+		artists.add(gemellini);
+		
+		muzzy = new ArtistBuilder()
+				.withArtistName("Muzzy")
+				.withRealName(new ArrayList<String>(Arrays.asList("Mustafa Ahmed Alobaidi")))
+				.withBirthDate(LocalDate.of(1994, 11, 10))
+				.withCountry(Country.UNITED_KINGDOM)
+				.withInitYear(2011)
+				.build();
+		artists.add(muzzy);
+		
+		rezonate = new ArtistBuilder()
+				.withArtistName("Rezonate")
+				.withRealName(new ArrayList<String>(Arrays.asList("Nicholas John Rennie")))
+				.withCountry(Country.CANADA)
+				.withInitYear(2011)
+				.withEndYear(2019)
+				.build();
+		artists.add(rezonate);
+		
+		tristam = new ArtistBuilder()
+				.withArtistName("Tristam")
+				.withRealName(new ArrayList<String>(Arrays.asList("Leandre Bérubé Bergeron")))
+				.withBirthDate(LocalDate.of(1995, 2, 26))
+				.withCountry(Country.CANADA)
+				.withInitYear(2008)
+				.withEndYear(2021)
+				.build();
+		artists.add(tristam);
+		
+		yh = new ArtistBuilder()
+				.withArtistName("yh")
+				.withRealName(new ArrayList<String>(Arrays.asList("Yonaton Habte")))
+				.withCountry(Country.UNITED_STATES)
+				.withInitYear(2011)
+				.build();
+		artists.add(yh);
+		
+		corinneLee = new ArtistBuilder()
+				.withArtistName("Corinne Lee")
+				.withRealName(new ArrayList<String>(Arrays.asList("Corinne Lee")))
+				.build();
+		artists.add(corinneLee);
 		/*
 		artist = new ArtistBuilder()
-				.withArtistName("x")
-				.withRealName(new ArrayList<String>(Arrays.asList("x")))
-				.withBirthDate(LocalDate.of(x, x, x))
-				.withCountry("x")
-				.withInitYear("x")
-				.withEndYear("x")
+				.withArtistName("")
+				.withRealName(new ArrayList<String>(Arrays.asList("")))
+				.withBirthDate(LocalDate.of(, , ))
+				.withCountry(Country.)
+				.withInitYear()
+				.withEndYear()
 				.build();
 		artists.add(x);
 		 */
@@ -672,6 +739,146 @@ class MonstercatBootstrap implements InitializingBean {
 				.buildSong();
 		songs.add(cloakAndDagger);
 		
+		//004 - Identity
+		
+		deadline = new SongBuilder()
+				.withTitle("Deadline")
+				.withArtists(new HashSet<Artist>(Arrays.asList(projectFortySix, gemellini)))
+				.withGenre(Genre.HOUSE)
+				.withLength(6, 20)
+				.withReleaseDate(LocalDate.of(2011, 12, 16))
+				.withCatalogNumber("MCS001")
+				.buildSong();
+		songs.add(deadline);
+		
+		theDestroyer = new SongBuilder()
+				.withTitle("The Destroyer")
+				.withArtists(new HashSet<Artist>(Arrays.asList(muzzy)))
+				.withRemixers(new HashSet<Artist>(Arrays.asList(twoThirds)))
+				.withGenre(Genre.DRUM_AND_BASS)
+				.withLength(5, 4)
+				.withReleaseDate(LocalDate.of(2011, 11, 11))
+				.buildSong();
+		songs.add(theDestroyer);
+		
+		runAwayFromMe = new SongBuilder()
+				.withTitle("Run Away From Me")
+				.withArtists(new HashSet<Artist>(Arrays.asList(dotExe)))
+				.withGenre(Genre.DRUMSTEP)
+				.withLength(4, 37)
+				.withReleaseDate(LocalDate.of(2011, 12, 2))
+				.buildSong();
+		songs.add(runAwayFromMe);
+		
+		oblivion = new SongBuilder()
+				.withTitle("Oblivion")
+				.withArtists(new HashSet<Artist>(Arrays.asList(obsidia)))
+				.withGenre(Genre.DUBSTEP)
+				.withLength(3, 57)
+				.withReleaseDate(LocalDate.of(2011, 11, 16))
+				.buildSong();
+		songs.add(oblivion);
+		
+		ridingTheStorm = new SongBuilder()
+				.withTitle("Riding the Storm")
+				.withArtists(new HashSet<Artist>(Arrays.asList(muzzy)))
+				.withGenre(Genre.DRUM_AND_BASS)
+				.withLength(4, 33)
+				.withReleaseDate(LocalDate.of(2011, 11, 23))
+				.buildSong();
+		songs.add(ridingTheStorm);
+		
+		crazy = new SongBuilder()
+				.withTitle("Crazy")
+				.withArtists(new HashSet<Artist>(Arrays.asList(projectFortySix, gemellini)))
+				.withFeaturedArtists(new HashSet<Artist>(Arrays.asList(corinneLee)))
+				.withGenre(Genre.HOUSE)
+				.withLength(7, 6)
+				.withReleaseDate(LocalDate.of(2011, 11, 14))
+				.buildSong();
+		songs.add(crazy);
+		
+		partyForTheLiving = new SongBuilder()
+				.withTitle("Party for the Living")
+				.withArtists(new HashSet<Artist>(Arrays.asList(tristam)))
+				.withGenre(Genre.DUBSTEP)
+				.withLength(3, 8)
+				.withReleaseDate(LocalDate.of(2011, 11, 25))
+				.buildSong();
+		songs.add(partyForTheLiving);
+		
+		partTwo = new SongBuilder()
+				.withTitle("Part Two")
+				.withArtists(new HashSet<Artist>(Arrays.asList(yh)))
+				.withGenre(Genre.DUBSTEP)
+				.withLength(3, 41)
+				.withReleaseDate(LocalDate.of(2011, 12, 12))
+				.buildSong();
+		songs.add(partTwo);
+		
+		strongArm = new SongBuilder()
+				.withTitle("Strong Arm")
+				.withArtists(new HashSet<Artist>(Arrays.asList(stephenWalking)))
+				.withGenre(Genre.DUBSTEP)
+				.withLength(4, 13)
+				.withReleaseDate(LocalDate.of(2011, 11, 28))
+				.buildSong();
+		songs.add(strongArm);
+		
+		killItWithFire = new SongBuilder()
+				.withTitle("Kill It With Fire")
+				.withArtists(new HashSet<Artist>(Arrays.asList(dotExe)))
+				.withGenre(Genre.DUBSTEP)
+				.withLength(3, 56)
+				.withReleaseDate(LocalDate.of(2011, 11, 7))
+				.buildSong();
+		songs.add(killItWithFire);
+		
+		spazzOut = new SongBuilder()
+				.withTitle("Spazz Out")
+				.withArtists(new HashSet<Artist>(Arrays.asList(arion)))
+				.withGenre(Genre.DUBSTEP)
+				.withLength(4, 20)
+				.withReleaseDate(LocalDate.of(2011, 12, 14))
+				.buildSong();
+		songs.add(spazzOut);
+		
+		stereo = new SongBuilder()
+				.withTitle("Stereo")
+				.withArtists(new HashSet<Artist>(Arrays.asList(hellberg)))
+				.withGenre(Genre.HOUSE)
+				.withLength(5, 44)
+				.withReleaseDate(LocalDate.of(2011, 12, 7))
+				.buildSong();
+		songs.add(stereo);
+		
+		audiocidity = new SongBuilder()
+				.withTitle("Audiocidity")
+				.withArtists(new HashSet<Artist>(Arrays.asList(ephixa)))
+				.withGenre(Genre.HARD_DANCE)
+				.withLength(3, 39)
+				.withReleaseDate(LocalDate.of(2011, 11, 30))
+				.buildSong();
+		songs.add(audiocidity);
+		
+		outsideThisWorld = new SongBuilder()
+				.withTitle("Outside This World")
+				.withArtists(new HashSet<Artist>(Arrays.asList(neilio)))
+				.withGenre(Genre.HARD_DANCE)
+				.withLength(5, 41)
+				.withReleaseDate(LocalDate.of(2011, 12, 5))
+				.buildSong();
+		songs.add(outsideThisWorld);
+		
+		pumpIt = new SongBuilder()
+				.withTitle("Pump It!")
+				.withArtists(new HashSet<Artist>(Arrays.asList(rezonate)))
+				.withGenre(Genre.ELECTRO)
+				.withLength(4, 7)
+				.withReleaseDate(LocalDate.of(2011, 12, 19))
+				.buildSong();
+		songs.add(pumpIt);
+		
 		songRepository.saveAll(songs);
 		
 		/*
@@ -681,6 +888,7 @@ class MonstercatBootstrap implements InitializingBean {
 				.withGenre(Genre.)
 				.withLength(, )
 				.withReleaseDate(LocalDate.of(20, , ))
+				.withCatalogNumber("MCS0")
 				.buildSong();
 		songs.add();
 		*/
@@ -690,7 +898,7 @@ class MonstercatBootstrap implements InitializingBean {
 		compilationAlbums = new HashSet<CompilationAlbum>();
 		
 		launchWeek = new CompilationAlbumBuilder()
-				.withTitle("Launch Week")
+				.withTitle("Monstercat 001 - Launch Week")
 				.withReleaseDate(LocalDate.of(2011, 7, 12))
 				.withCompilationType(CompilatonType.MONSTERCAT_COMPILATION)
 				.withCatalogNumber("MC001")
@@ -705,7 +913,7 @@ class MonstercatBootstrap implements InitializingBean {
 		compilationAlbums.add(launchWeek);
 		
 		earlyStage = new CompilationAlbumBuilder()
-				.withTitle("Early Stage")
+				.withTitle("Monstercat 002 - Early Stage")
 				.withReleaseDate(LocalDate.of(2011, 9, 28))
 				.withCompilationType(CompilatonType.MONSTERCAT_COMPILATION)
 				.withCatalogNumber("MC002")
@@ -728,7 +936,7 @@ class MonstercatBootstrap implements InitializingBean {
 		compilationAlbums.add(earlyStage);
 		
 		momentum = new CompilationAlbumBuilder()
-				.withTitle("Momentum")
+				.withTitle("Monstercat 003 - Momentum")
 				.withReleaseDate(LocalDate.of(2011, 11, 7))
 				.withCompilationType(CompilatonType.MONSTERCAT_COMPILATION)
 				.withCatalogNumber("MC003")
@@ -749,6 +957,29 @@ class MonstercatBootstrap implements InitializingBean {
 		momentum.addSong(elementsOfSanity);
 		momentum.addSong(cloakAndDagger);
 		compilationAlbums.add(momentum);
+		
+		identity = new CompilationAlbumBuilder()
+				.withTitle("Monstercat 004 - Identity")
+				.withReleaseDate(LocalDate.of(2011, 12, 18))
+				.withCompilationType(CompilatonType.MONSTERCAT_COMPILATION)
+				.withCatalogNumber("MC004")
+				.build();
+		identity.addSong(deadline);
+		identity.addSong(theDestroyer);
+		identity.addSong(runAwayFromMe);
+		identity.addSong(oblivion);
+		identity.addSong(ridingTheStorm);
+		identity.addSong(crazy);
+		identity.addSong(partyForTheLiving);
+		identity.addSong(partTwo);
+		identity.addSong(strongArm);
+		identity.addSong(killItWithFire);
+		identity.addSong(spazzOut);
+		identity.addSong(stereo);
+		identity.addSong(audiocidity);
+		identity.addSong(outsideThisWorld);
+		identity.addSong(pumpIt);
+		compilationAlbums.add(identity);
 		
 		albumRepository.saveAll(compilationAlbums);
 		
