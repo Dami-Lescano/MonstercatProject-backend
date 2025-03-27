@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import app.dto.ArtistNameAndIdDTO;
 import app.model.Artist;
 import app.model.Song;
 import app.repository.ArtistRepository;
@@ -28,6 +29,16 @@ public class ArtistService extends GenericService<Artist>{
 
 	public Artist findByName(String name) {
 		return artistRepository.findByArtistName(name);
+	}
+	
+	private ArtistNameAndIdDTO artistToNameAndIdDTO(Artist artist) {
+		return new ArtistNameAndIdDTO(artist.getArtistName(), artist.getArtistId());
+	}
+
+	public List<ArtistNameAndIdDTO> artistsNameAndIdDTO() {
+		List<Artist> artists = this.findAll();
+		List<ArtistNameAndIdDTO> artistsDTO = artists.stream().map(a -> this.artistToNameAndIdDTO(a)).toList();
+		return artistsDTO;
 	}
 	
 }
