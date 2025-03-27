@@ -1,7 +1,9 @@
 package app.model;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.hibernate.annotations.ManyToAny;
@@ -130,5 +132,19 @@ public class Song {
 		this.catalogNumber = catalogNumber;
 	}
 	
+	public List<String> getArtistsInStrings(){
+		return this.artists.stream().map(a -> a.getArtistName()).toList();
+	}
 	
+	public List<String> getFeaturedArtistsInStrings(){
+		return this.featuredArtists.stream().map(a -> a.getArtistName()).toList();
+	}
+	
+	public List<String> getRemixersInStrings(){
+		return this.remixers.stream().map(a -> a.getArtistName()).toList();
+	}
+	
+	public String getReleaseDateInString() {
+		return this.releaseDate.format(DateTimeFormatter.ofPattern(DATE_PATTERN));
+	}
 }

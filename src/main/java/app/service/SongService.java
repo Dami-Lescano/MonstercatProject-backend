@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import app.dto.SongDTO;
 import app.model.Song;
 import app.repository.SongRepository;
 
@@ -18,9 +19,19 @@ public class SongService extends GenericService<Song>{
 	}
 	
 	
-	public Song findById(Integer id) {
+	public SongDTO songInfo(Integer id) {
 		Song song = songRepository.findBySongId(id);
-		return song;
+		SongDTO songDTO = new SongDTO();
+		songDTO.setSongId(song.getSongId());
+		songDTO.setTitle(song.getTitle());
+		songDTO.setLength(song.getLengthInString());
+		songDTO.setCatalogNumber(song.getCatalogNumber());
+		songDTO.setGenre(song.getGenre().getName());
+		songDTO.setReleaseDate(song.getReleaseDateInString());
+		songDTO.setArtists(song.getArtistsInStrings());
+		songDTO.setFeaturedArtists(song.getFeaturedArtistsInStrings());
+		songDTO.setRemixers(song.getRemixersInStrings());
+		return songDTO;
 	}
 	
 	public List<Song> findByArtist(Integer artistId){
