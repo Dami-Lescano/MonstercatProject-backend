@@ -9,20 +9,27 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import app.dto.CountryDTO;
 import app.dto.GenreDTO;
-import app.service.GenreService;
+import app.service.EnumsService;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/api/genre")
-public class GenreController {
+@RequestMapping("/api/enums")
+public class EnumsController {
 	
 	@Autowired
-	GenreService genreService;
+	EnumsService genreService;
 	
-	@GetMapping
+	@GetMapping("/genres")
 	public ResponseEntity<List<GenreDTO>> allGenres() {
 		List<GenreDTO> response = genreService.allGenres();
+		return ResponseEntity.ok(response);
+	}
+	
+	@GetMapping("/countries")
+	public ResponseEntity<List<CountryDTO>> allCountries() {
+		List<CountryDTO> response = genreService.allCountries();
 		return ResponseEntity.ok(response);
 	}
 	

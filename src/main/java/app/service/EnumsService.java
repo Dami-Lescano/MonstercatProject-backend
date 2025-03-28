@@ -5,11 +5,13 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import app.dto.CountryDTO;
 import app.dto.GenreDTO;
+import app.enumerate.Country;
 import app.enumerate.Genre;
 
 @Service
-public class GenreService {
+public class EnumsService {
 	
 	public List<GenreDTO> allGenres() {
 		List<Genre> genres = Genre.getAll();
@@ -23,6 +25,20 @@ public class GenreService {
 		genreDTO.setName(genre.getName());
 		genreDTO.setHexColor(genre.getHexColor());
 		return genreDTO;
+	}
+	
+	public List<CountryDTO> allCountries() {
+		List<Country> countries = Country.getAll();
+		List<CountryDTO> countriesDTO = countries.stream().map(country -> countryToDTO(country)).collect(Collectors.toList());
+		return countriesDTO;
+	}
+	
+	private CountryDTO countryToDTO(Country country) {
+		CountryDTO countryDTO = new CountryDTO();
+		countryDTO.setGenre(country);
+		countryDTO.setName(country.getName());
+		countryDTO.setNombre(country.getNombre());
+		return countryDTO;
 	}
 	
 }

@@ -10,7 +10,8 @@ public enum Country {
 	UNITED_KINGDOM("United Kingdom", "Reino Unido"),
 	IRELAND("Ireland", "Irlanda"),
 	AUSTRALIA("Australia", "Australia"),
-	SWEDEN("Sweden", "Suecia");
+	SWEDEN("Sweden", "Suecia"),
+	ARGENTINA("Argentina", "Argentina");
 	
 	private String name;
     private String nombre;
