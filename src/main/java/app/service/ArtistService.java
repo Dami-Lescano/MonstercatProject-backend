@@ -36,7 +36,7 @@ public class ArtistService extends GenericService<Artist>{
 	}
 
 	public List<ArtistNameAndIdDTO> artistsNameAndIdDTO() {
-		List<Artist> artists = this.findAll();
+		List<Artist> artists = this.artistRepository.findAllByOrderByArtistNameAsc();
 		List<ArtistNameAndIdDTO> artistsDTO = artists.stream().map(a -> this.artistToNameAndIdDTO(a)).toList();
 		return artistsDTO;
 	}

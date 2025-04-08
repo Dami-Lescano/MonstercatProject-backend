@@ -21,6 +21,16 @@ public class SongService extends GenericService<Song>{
 	
 	public SongDTO songInfo(Integer id) {
 		Song song = songRepository.findBySongId(id);
+		return this.songToDTO(song);
+	}
+	
+	public List<SongDTO> songsList() {
+		List<Song> songs = songRepository.findAll();
+		List<SongDTO> songsDTOs = songs.stream().map(song -> this.songToDTO(song)).toList();
+		return songsDTOs;
+	}
+	
+	private SongDTO songToDTO(Song song) {
 		SongDTO songDTO = new SongDTO();
 		songDTO.setSongId(song.getSongId());
 		songDTO.setTitle(song.getTitle());

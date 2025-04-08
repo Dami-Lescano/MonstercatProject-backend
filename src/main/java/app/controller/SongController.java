@@ -1,5 +1,7 @@
 package app.controller;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,5 +31,11 @@ public class SongController extends GenericController<Song> {
 		
 		return ResponseEntity.ok(entity);
 	}
+    
+    @GetMapping("/songsList")
+    public ResponseEntity<List<SongDTO>> songsList(){
+    	List<SongDTO> response = this.songService.songsList();
+    	return ResponseEntity.ok(response);
+    }
 }
 
