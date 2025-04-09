@@ -39,14 +39,17 @@ public class Song {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_PATTERN)
 	private LocalDate releaseDate;
 
+	//TODO: Investigar porque OneToMany se rompe cuando se quiere guardar una cancion con un mismo artista de cualquier tipo que otra cancion
+	// Por ejemplo: si el artista de una cancion ya existente es Ephixa y quiero guardar otra cancion de Ephixa se rompe
+	
 	@ManyToMany
 	@NotEmpty(message = "Debe tener por lo menos un artista.")
 	private Set<Artist> artists = new HashSet<Artist>();
 	
-	@OneToMany
+	@ManyToMany
 	private Set<Artist> featuredArtists = new HashSet<Artist>();
 	
-	@OneToMany
+	@ManyToMany
 	private Set<Artist> remixers = new HashSet<Artist>();
 
 	private Genre genre = Genre.UNKNOWN;
