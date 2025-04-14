@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import app.dto.ArtistNameAndIdDTO;
+import app.dto.ArtistItem;
 import app.model.Artist;
 import app.model.Song;
 import app.service.ArtistService;
@@ -40,8 +40,8 @@ public class ArtistController extends GenericController<Artist> {
 	}
 	
 	@GetMapping("/namesAndIds")
-	public ResponseEntity<List<ArtistNameAndIdDTO>> artistsNameAndIdDTO(){
-		List<ArtistNameAndIdDTO> response = this.artistService.artistsNameAndIdDTO();
+	public ResponseEntity<List<ArtistItem>> artistsNameAndIdDTO(){
+		List<ArtistItem> response = this.artistService.artistsNameAndIdDTO();
 		return ResponseEntity.ok(response);
 	}
 }

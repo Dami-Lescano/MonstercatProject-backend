@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import app.dto.ArtistNameAndIdDTO;
+import app.dto.ArtistItem;
 import app.model.Artist;
 import app.model.Song;
 import app.repository.ArtistRepository;
@@ -31,13 +31,13 @@ public class ArtistService extends GenericService<Artist>{
 		return artistRepository.findByArtistName(name);
 	}
 	
-	private ArtistNameAndIdDTO artistToNameAndIdDTO(Artist artist) {
-		return new ArtistNameAndIdDTO(artist.getArtistName(), artist.getArtistId());
+	private ArtistItem artistToNameAndIdDTO(Artist artist) {
+		return new ArtistItem(artist.getArtistName(), artist.getArtistId());
 	}
 
-	public List<ArtistNameAndIdDTO> artistsNameAndIdDTO() {
+	public List<ArtistItem> artistsNameAndIdDTO() {
 		List<Artist> artists = this.artistRepository.findAllByOrderByArtistNameAsc();
-		List<ArtistNameAndIdDTO> artistsDTO = artists.stream().map(a -> this.artistToNameAndIdDTO(a)).toList();
+		List<ArtistItem> artistsDTO = artists.stream().map(a -> this.artistToNameAndIdDTO(a)).toList();
 		return artistsDTO;
 	}
 	

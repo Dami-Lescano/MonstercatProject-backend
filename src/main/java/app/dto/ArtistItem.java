@@ -1,10 +1,10 @@
 package app.dto;
 
-public class ArtistNameAndIdDTO {
+public class ArtistItem {
 	private String artistName;
 	private Integer artistId;
 
-	public ArtistNameAndIdDTO(String name, Integer id) {
+	public ArtistItem(String name, Integer id) {
 		this.artistId = id;
 		this.artistName = name;
 	}
