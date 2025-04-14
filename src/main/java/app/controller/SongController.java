@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import app.dto.SongDTO;
+import app.dto.SongItem;
 import app.model.Song;
 import app.service.SongService;
 
@@ -35,6 +36,12 @@ public class SongController extends GenericController<Song> {
     @GetMapping("/songsList")
     public ResponseEntity<List<SongDTO>> songsList(){
     	List<SongDTO> response = this.songService.songsList();
+    	return ResponseEntity.ok(response);
+    }
+    
+    @GetMapping("/songsItems")
+    public ResponseEntity<List<SongItem>> songsItems(){
+    	List<SongItem> response = this.songService.songsItems();
     	return ResponseEntity.ok(response);
     }
 }
