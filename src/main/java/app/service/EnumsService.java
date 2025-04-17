@@ -1,12 +1,13 @@
 package app.service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import app.dto.CompilationTypeDTO;
 import app.dto.CountryDTO;
 import app.dto.GenreDTO;
+import app.enumerate.CompilationType;
 import app.enumerate.Country;
 import app.enumerate.Genre;
 
@@ -15,7 +16,7 @@ public class EnumsService {
 	
 	public List<GenreDTO> allGenres() {
 		List<Genre> genres = Genre.getAll();
-		List<GenreDTO> genresDTO = genres.stream().map(genre -> genreToDTO(genre)).collect(Collectors.toList());
+		List<GenreDTO> genresDTO = genres.stream().map(genre -> genreToDTO(genre)).toList();
 		return genresDTO;
 	}
 	
@@ -29,7 +30,7 @@ public class EnumsService {
 	
 	public List<CountryDTO> allCountries() {
 		List<Country> countries = Country.getAll();
-		List<CountryDTO> countriesDTO = countries.stream().map(country -> countryToDTO(country)).collect(Collectors.toList());
+		List<CountryDTO> countriesDTO = countries.stream().map(country -> countryToDTO(country)).toList();
 		return countriesDTO;
 	}
 	
@@ -39,6 +40,20 @@ public class EnumsService {
 		countryDTO.setName(country.getName());
 		countryDTO.setNombre(country.getNombre());
 		return countryDTO;
+	}
+	
+	public List<CompilationTypeDTO> allCompilationTypes() {
+		List<CompilationType> compilationTypes = CompilationType.getAll();
+		List<CompilationTypeDTO> compilationTypesDTO = compilationTypes.stream().map(compilationType -> compilationTypesToDTO(compilationType)).toList();
+		return compilationTypesDTO;
+	}
+	
+	private CompilationTypeDTO compilationTypesToDTO(CompilationType compilationType) {
+		CompilationTypeDTO compilationTypeDTO = new CompilationTypeDTO();
+		compilationTypeDTO.setCompilationType(compilationType);
+		compilationTypeDTO.setTipo(compilationType.getTipo());
+		compilationTypeDTO.setType(compilationType.getType());
+		return compilationTypeDTO;
 	}
 	
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import app.dto.ArtistItem;
+import app.dto.SongDTO;
 import app.model.Artist;
 import app.model.Song;
 import app.repository.ArtistRepository;
@@ -23,8 +24,9 @@ public class ArtistService extends GenericService<Artist>{
 		this.artistRepository = repository;
 	}
 
-	public List<Song> allArtistSongs(Integer artistId){
-		return songService.findByArtist(artistId);
+	public List<SongDTO> allArtistSongs(Integer artistId){
+		List<Song> songs = songService.findByArtist(artistId);
+		return this.songService.songsToDTOs(songs);
 	}
 
 	public Artist findByName(String name) {

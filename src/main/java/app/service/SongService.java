@@ -48,7 +48,7 @@ public class SongService extends GenericService<Song>{
 		return songDTO;
 	}
 	
-	private List<SongDTO> songsToDTOs(List<Song> songs) {
+	public List<SongDTO> songsToDTOs(List<Song> songs) {
 		return songs.stream().map(song -> this.songToDTO(song)).toList();
 	}
 	
@@ -78,7 +78,7 @@ public class SongService extends GenericService<Song>{
 		return songItem;
 	}
 	
-	private List<SongItem> songsToItems(List<Song> songs) {
+	public List<SongItem> songsToItems(List<Song> songs) {
 		return songs.stream().map(song -> this.songToItem(song)).toList();
 	}
 	

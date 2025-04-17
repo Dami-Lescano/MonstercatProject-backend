@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import app.dto.ArtistItem;
+import app.dto.SongDTO;
 import app.model.Artist;
 import app.model.Song;
 import app.service.ArtistService;
@@ -28,8 +29,8 @@ public class ArtistController extends GenericController<Artist> {
 	}
 	
 	@GetMapping("/{artistId}/songs")
-	public ResponseEntity<List<Song>> allArtistSongs(@PathVariable Integer artistId) {
-		List<Song> response = this.artistService.allArtistSongs(artistId);
+	public ResponseEntity<List<SongDTO>> allArtistSongs(@PathVariable Integer artistId) {
+		List<SongDTO> response = this.artistService.allArtistSongs(artistId);
 		return ResponseEntity.ok(response);
 	}
 	

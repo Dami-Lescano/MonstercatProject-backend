@@ -3,13 +3,17 @@ package app.controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import app.dto.AlbumDTO;
 import app.model.Album;
 import app.service.AlbumService;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/album")
 public class AlbumController extends GenericController<Album>{
@@ -24,6 +28,18 @@ public class AlbumController extends GenericController<Album>{
 	@GetMapping("/names")
 	private ResponseEntity<List<String>> albumsNames() {
 		List<String> response = this.albumService.albumsNames();
+		return ResponseEntity.ok(response);
+	}
+	
+	@GetMapping("/albumsList")
+	private ResponseEntity<List<AlbumDTO>> albumsList() {
+		List<AlbumDTO> response = this.albumService.allAlbums();
+		return ResponseEntity.ok(response);
+	}
+	
+	@GetMapping("/info/{id}")
+	private ResponseEntity<AlbumDTO> albumInfo(@PathVariable Integer id) {
+		AlbumDTO response = this.albumService.albumInfo(id);
 		return ResponseEntity.ok(response);
 	}
 }

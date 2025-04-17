@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.Map;
 import java.util.Set;
 
-import app.enumerate.CompilatonType;
+import app.enumerate.CompilationType;
 import app.model.CompilationAlbum;
 import app.model.Song;
 
@@ -40,7 +40,7 @@ public class CompilationAlbumBuilder {
 		return this;
 	}
 	
-	public CompilationAlbumBuilder withCompilationType(CompilatonType compilationType) {
+	public CompilationAlbumBuilder withCompilationType(CompilationType compilationType) {
 		this.compilationAlbum.setCompilationType(compilationType);
 		return this;
 	}

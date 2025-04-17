@@ -1,17 +1,17 @@
 package app.model;
 
-import app.enumerate.CompilatonType;
+import app.enumerate.CompilationType;
 import jakarta.persistence.Entity;
 
 @Entity
 public class CompilationAlbum extends Album {
-	private CompilatonType CompilationType;
+	private CompilationType CompilationType;
 
-	public CompilatonType getCompilationType() {
+	public CompilationType getCompilationType() {
 		return CompilationType;
 	}
 
-	public void setCompilationType(CompilatonType compilationType) {
+	public void setCompilationType(CompilationType compilationType) {
 		CompilationType = compilationType;
 	}
 }

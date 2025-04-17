@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import app.builder.ArtistBuilder;
 import app.builder.CompilationAlbumBuilder;
 import app.builder.SongBuilder;
-import app.enumerate.CompilatonType;
+import app.enumerate.CompilationType;
 import app.enumerate.Country;
 import app.enumerate.Genre;
 import app.model.Artist;
@@ -900,7 +900,7 @@ class MonstercatBootstrap implements InitializingBean {
 		launchWeek = new CompilationAlbumBuilder()
 				.withTitle("Monstercat 001 - Launch Week")
 				.withReleaseDate(LocalDate.of(2011, 7, 12))
-				.withCompilationType(CompilatonType.MONSTERCAT_COMPILATION)
+				.withCompilationType(CompilationType.MONSTERCAT_COMPILATION)
 				.withCatalogNumber("MC001")
 				.build();
 		launchWeek.addSong(coldBloodAndIceCreamCones);
@@ -915,7 +915,7 @@ class MonstercatBootstrap implements InitializingBean {
 		earlyStage = new CompilationAlbumBuilder()
 				.withTitle("Monstercat 002 - Early Stage")
 				.withReleaseDate(LocalDate.of(2011, 9, 28))
-				.withCompilationType(CompilatonType.MONSTERCAT_COMPILATION)
+				.withCompilationType(CompilationType.MONSTERCAT_COMPILATION)
 				.withCatalogNumber("MC002")
 				.build();
 		earlyStage.addSong(someWobbles);
@@ -938,7 +938,7 @@ class MonstercatBootstrap implements InitializingBean {
 		momentum = new CompilationAlbumBuilder()
 				.withTitle("Monstercat 003 - Momentum")
 				.withReleaseDate(LocalDate.of(2011, 11, 7))
-				.withCompilationType(CompilatonType.MONSTERCAT_COMPILATION)
+				.withCompilationType(CompilationType.MONSTERCAT_COMPILATION)
 				.withCatalogNumber("MC003")
 				.build();
 		momentum.addSong(shivers);
@@ -961,7 +961,7 @@ class MonstercatBootstrap implements InitializingBean {
 		identity = new CompilationAlbumBuilder()
 				.withTitle("Monstercat 004 - Identity")
 				.withReleaseDate(LocalDate.of(2011, 12, 18))
-				.withCompilationType(CompilatonType.MONSTERCAT_COMPILATION)
+				.withCompilationType(CompilationType.MONSTERCAT_COMPILATION)
 				.withCatalogNumber("MC004")
 				.build();
 		identity.addSong(deadline);

@@ -1,12 +1,15 @@
 package app.model;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
+
+import org.hibernate.annotations.ManyToAny;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,6 +17,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({
+	@JsonSubTypes.Type(value = ArtistAlbum.class, name = "artistAlbum"),
+	@JsonSubTypes.Type(value = CompilationAlbum.class, name = "compilationAlbum")
+})
 @Entity
 public abstract class Album {
 	
@@ -24,7 +32,11 @@ public abstract class Album {
 	private Integer albumId;
 	
 	private String title;
-	@OneToMany
+	
+	//TODO: Investigar porque OneToMany se rompe cuando se quiere guardar una cancion con un mismo artista de cualquier tipo que otra cancion
+	//Por ejemplo: si el artista de una cancion ya existente es Ephixa y quiero guardar otra cancion de Ephixa se rompe
+	
+	@ManyToAny
 	private Map<Integer, Song> songs = new HashMap<Integer, Song>();
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_PATTERN)
 	private LocalDate releaseDate;
@@ -74,5 +86,9 @@ public abstract class Album {
 	public int getNumberOfSongs() {
 		var count = this.songs.size();
 		return count;
+	}
+	
+	public String getReleaseDateInString() {
+		return this.releaseDate.format(DateTimeFormatter.ofPattern(DATE_PATTERN));
 	}
 }
