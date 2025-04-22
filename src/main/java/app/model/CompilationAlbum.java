@@ -5,13 +5,13 @@ import jakarta.persistence.Entity;
 
 @Entity
 public class CompilationAlbum extends Album {
-	private CompilationType CompilationType;
+	private CompilationType compilationType;
 
 	public CompilationType getCompilationType() {
-		return CompilationType;
+		return compilationType;
 	}
 
 	public void setCompilationType(CompilationType compilationType) {
-		CompilationType = compilationType;
+		this.compilationType = compilationType;
 	}
 }
