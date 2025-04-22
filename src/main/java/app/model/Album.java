@@ -16,6 +16,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({
@@ -31,15 +35,21 @@ public abstract class Album {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer albumId;
 	
+	@NotBlank(message = "El álbum debe tener un título.")
 	private String title;
 	
 	//TODO: Investigar porque OneToMany se rompe cuando se quiere guardar una cancion con un mismo artista de cualquier tipo que otra cancion
 	//Por ejemplo: si el artista de una cancion ya existente es Ephixa y quiero guardar otra cancion de Ephixa se rompe
 	
 	@ManyToAny
+	@Size(min = 2, message = "El álbum be tener por lo menos dos canciones.")
 	private Map<Integer, Song> songs = new HashMap<Integer, Song>();
+	
+	@NotNull(message = "El álbum debe tener una fecha de lanzamiento")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_PATTERN)
 	private LocalDate releaseDate;
+	
+	@NotBlank(message = "El álbum debe tener un título.")
 	private String catalogNumber;
 	
 	public Integer getAlbumId() {
