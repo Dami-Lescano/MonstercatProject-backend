@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import app.dto.SongDTO;
 import app.dto.SongItem;
+import app.enumerate.Genre;
 import app.model.Song;
 import app.service.SongService;
 
@@ -42,6 +43,18 @@ public class SongController extends GenericController<Song> {
     @GetMapping("/songsItems")
     public ResponseEntity<List<SongItem>> songsItems(){
     	List<SongItem> response = this.songService.songsItems();
+    	return ResponseEntity.ok(response);
+    }
+    
+    @GetMapping("/songsItems/year/{year}")
+    public ResponseEntity<List<SongItem>> songsItemsByYear(@PathVariable int year){
+    	List<SongItem> response = this.songService.songsItemsByYear(year);
+    	return ResponseEntity.ok(response);
+    }
+    
+    @GetMapping("/songsItems/genre/{genre}")
+    public ResponseEntity<List<SongItem>> songsItemsByGenre(@PathVariable Genre genre){
+    	List<SongItem> response = this.songService.songsItemsByGenre(genre);
     	return ResponseEntity.ok(response);
     }
 }

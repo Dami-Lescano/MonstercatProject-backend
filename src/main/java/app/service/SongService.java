@@ -1,11 +1,13 @@
 package app.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import app.dto.SongDTO;
 import app.dto.SongItem;
+import app.enumerate.Genre;
 import app.model.Song;
 import app.repository.SongRepository;
 
@@ -88,6 +90,18 @@ public class SongService extends GenericService<Song>{
 	
 	public List<SongItem> songsItems() {
 		List<Song> songs = this.findAll();
+		return this.songsToItems(songs);
+	}
+
+	public List<SongItem> songsItemsByYear(int year) {
+		LocalDate startOfYear = LocalDate.of(year, 1, 1);
+		LocalDate endOfYear = LocalDate.of(year, 12, 31);
+		List<Song> songs = this.songRepository.findByReleaseDateBetween(startOfYear, endOfYear);
+		return this.songsToItems(songs);
+	}
+
+	public List<SongItem> songsItemsByGenre(Genre genre) {
+		List<Song> songs = this.songRepository.findByGenre(genre);
 		return this.songsToItems(songs);
 	}
 	
