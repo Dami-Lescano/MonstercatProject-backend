@@ -3,10 +3,13 @@ package app.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 
 @Entity
+@JsonTypeName("artistAlbum")
 public class ArtistAlbum extends Album {
 	@OneToMany
 	private Set<Artist> artists = new HashSet<Artist>();

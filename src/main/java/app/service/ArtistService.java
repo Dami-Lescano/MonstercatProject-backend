@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import app.dto.ArtistItem;
 import app.dto.SongDTO;
+import app.dto.SongItem;
 import app.model.Artist;
 import app.model.Song;
 import app.repository.ArtistRepository;
@@ -41,6 +42,11 @@ public class ArtistService extends GenericService<Artist>{
 		List<Artist> artists = this.artistRepository.findAllByOrderByArtistNameAsc();
 		List<ArtistItem> artistsDTO = artists.stream().map(a -> this.artistToNameAndIdDTO(a)).toList();
 		return artistsDTO;
+	}
+
+	public List<SongItem> allArtistsSongs(List<Integer> artistId){
+		List<Song> songs = songService.findByArtists(artistId);
+		return this.songService.songsToItems(songs);
 	}
 	
 }

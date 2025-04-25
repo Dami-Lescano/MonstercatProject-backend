@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import app.dto.ArtistItem;
 import app.dto.SongDTO;
+import app.dto.SongItem;
 import app.model.Artist;
-import app.model.Song;
 import app.service.ArtistService;
 
 @CrossOrigin(origins = "*")
@@ -44,5 +44,11 @@ public class ArtistController extends GenericController<Artist> {
 	public ResponseEntity<List<ArtistItem>> artistsNameAndIdDTO(){
 		List<ArtistItem> response = this.artistService.artistsNameAndIdDTO();
 		return ResponseEntity.ok(response);
+	}
+	
+	@GetMapping("/artistsSongs")
+	public ResponseEntity<List<SongItem>> allArtistsSongs(@RequestParam("ids") List<Integer> ids) {
+	    List<SongItem> response = this.artistService.allArtistsSongs(ids);
+	    return ResponseEntity.ok(response);
 	}
 }

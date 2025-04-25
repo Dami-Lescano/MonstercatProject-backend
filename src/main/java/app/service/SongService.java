@@ -105,4 +105,8 @@ public class SongService extends GenericService<Song>{
 		return this.songsToItems(songs);
 	}
 	
+	public List<Song> findByArtists(List<Integer> artistId){
+		return songRepository.findAllByArtistsArtistIdInOrFeaturedArtistsArtistIdInOrRemixersArtistIdIn(artistId, artistId, artistId);
+	}
+	
 }

@@ -14,6 +14,8 @@ public class AlbumDTO {
 	private Integer numberOfSongs;
 	
 	private CompilationType compilationType;
+	
+	//TODO: Hacer compatible este DTO con ambos tipos de albumes.
 
 	public Integer getId() {
 		return id;

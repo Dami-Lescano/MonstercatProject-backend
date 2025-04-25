@@ -29,4 +29,8 @@ public interface SongRepository extends GenericRepository<Song> {
 	
 	@EntityGraph(attributePaths = { "artists.artistName", "featuredArtists.artistName", "remixers.artistName" })
 	public List<Song> findByGenre(Genre genre);
+	
+	@EntityGraph(attributePaths = { "artists", "featuredArtists", "remixers" })
+	public List<Song> findAllByArtistsArtistIdInOrFeaturedArtistsArtistIdInOrRemixersArtistIdIn(List<Integer> ids1, List<Integer> ids2, List<Integer> ids3);
+	
 }
