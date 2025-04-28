@@ -37,10 +37,14 @@ public class ArtistService extends GenericService<Artist>{
 	private ArtistItem artistToNameAndIdDTO(Artist artist) {
 		return new ArtistItem(artist.getArtistName(), artist.getArtistId());
 	}
+	
+	public List<ArtistItem> artistsToItems(List<Artist> artists) {
+		return artists.stream().map(a -> this.artistToNameAndIdDTO(a)).toList();
+	}
 
 	public List<ArtistItem> artistsNameAndIdDTO() {
 		List<Artist> artists = this.artistRepository.findAllByOrderByArtistNameAsc();
-		List<ArtistItem> artistsDTO = artists.stream().map(a -> this.artistToNameAndIdDTO(a)).toList();
+		List<ArtistItem> artistsDTO = this.artistsToItems(artists);
 		return artistsDTO;
 	}
 

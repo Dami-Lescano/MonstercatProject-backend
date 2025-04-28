@@ -2,9 +2,7 @@ package app.dto;
 
 import java.util.List;
 
-import app.enumerate.CompilationType;
-
-public class AlbumDTO {
+public class ArtistAlbumDTO {
 	private Integer id;
 	private String title;
 	private String catalogNumber;
@@ -13,9 +11,8 @@ public class AlbumDTO {
 	private String length;
 	private Integer numberOfSongs;
 	
-	private CompilationType compilationType;
-	
-	//TODO: Hacer compatible este DTO con ambos tipos de albumes.
+	private List<ArtistItem> artists;
+	private String type = "artistAlbum";
 
 	public Integer getId() {
 		return id;
@@ -73,11 +70,15 @@ public class AlbumDTO {
 		this.numberOfSongs = numberOfSongs;
 	}
 
-	public CompilationType getCompilationType() {
-		return compilationType;
+	public List<ArtistItem> getArtists() {
+		return artists;
 	}
 
-	public void setCompilationType(CompilationType compilationType) {
-		this.compilationType = compilationType;
+	public void setArtists(List<ArtistItem> artists) {
+		this.artists = artists;
+	}
+	
+	public String getType() {
+		return type;
 	}
 }

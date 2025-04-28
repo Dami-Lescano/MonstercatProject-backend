@@ -19,7 +19,7 @@ import app.enumerate.Genre;
 import app.model.Artist;
 import app.model.CompilationAlbum;
 import app.model.Song;
-import app.repository.AlbumRepository;
+import app.repository.CompilationAlbumRepository;
 import app.repository.ArtistRepository;
 import app.repository.SongRepository;
 
@@ -33,7 +33,7 @@ class MonstercatBootstrap implements InitializingBean {
 	private ArtistRepository artistRepository;
 	
 	@Autowired
-	private AlbumRepository albumRepository;
+	private CompilationAlbumRepository albumRepository;
 	
 	//Songs list
 	private Set<Song> songs;
