@@ -9,6 +9,7 @@ import app.dto.ArtistItem;
 import app.dto.SongDTO;
 import app.dto.SongItem;
 import app.model.Artist;
+import app.model.Converter;
 import app.model.Song;
 import app.repository.ArtistRepository;
 
@@ -27,30 +28,22 @@ public class ArtistService extends GenericService<Artist>{
 
 	public List<SongDTO> allArtistSongs(Integer artistId){
 		List<Song> songs = songService.findByArtist(artistId);
-		return this.songService.songsToDTOs(songs);
+		return Converter.songsToDTOs(songs);
 	}
 
 	public Artist findByName(String name) {
 		return artistRepository.findByArtistName(name);
 	}
-	
-	private ArtistItem artistToNameAndIdDTO(Artist artist) {
-		return new ArtistItem(artist.getArtistName(), artist.getArtistId());
-	}
-	
-	public List<ArtistItem> artistsToItems(List<Artist> artists) {
-		return artists.stream().map(a -> this.artistToNameAndIdDTO(a)).toList();
-	}
 
 	public List<ArtistItem> artistsNameAndIdDTO() {
 		List<Artist> artists = this.artistRepository.findAllByOrderByArtistNameAsc();
-		List<ArtistItem> artistsDTO = this.artistsToItems(artists);
+		List<ArtistItem> artistsDTO = Converter.artistsToItems(artists);
 		return artistsDTO;
 	}
 
 	public List<SongItem> allArtistsSongs(List<Integer> artistId){
 		List<Song> songs = songService.findByArtists(artistId);
-		return this.songService.songsToItems(songs);
+		return Converter.songsToItems(songs);
 	}
 	
 }

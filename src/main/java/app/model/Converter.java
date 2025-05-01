@@ -1,7 +1,15 @@
 package app.model;
 
+import java.util.List;
+
+import app.dto.ArtistAlbumDTO;
+import app.dto.ArtistItem;
+import app.dto.CompilationAlbumDTO;
+import app.dto.SongDTO;
+import app.dto.SongItem;
+
 public abstract class Converter {
-	
+	//length
 	public static String intToLength(int length) {
 		Integer minutes = length / 60;
 		Integer seconds = length % 60;
@@ -14,5 +22,98 @@ public abstract class Converter {
 	
 	public static Integer lengthToInt(int minutes, int seconds) {
 		return minutes * 60 + seconds;
+	}
+	
+	//songs
+	public static SongDTO songToDTO(Song song) {
+		SongDTO songDTO = new SongDTO();
+		songDTO.setSongId(song.getSongId());
+		songDTO.setTitle(song.getTitle());
+		songDTO.setLength(song.getLengthInString());
+		songDTO.setLengthMinutes(song.getMinutes());
+		songDTO.setLengthSeconds(song.getSeconds());
+		songDTO.setCatalogNumber(song.getCatalogNumber());
+		songDTO.setGenreName(song.getGenre().getName());
+		songDTO.setGenre(song.getGenre());
+		songDTO.setReleaseDate(song.getReleaseDateInString());
+		songDTO.setArtists(artistsToItems(song.getArtists().stream().toList()));
+		songDTO.setFeaturedArtists(artistsToItems(song.getFeaturedArtists().stream().toList()));
+		songDTO.setRemixers(artistsToItems(song.getRemixers().stream().toList()));
+		return songDTO;
+	}
+	
+	public static List<SongDTO> songsToDTOs(List<Song> songs) {
+		return songs.stream().map(song -> songToDTO(song)).toList();
+	}
+	
+	public static SongItem songToItem(Song song) {
+		String fullName = "";
+		List<String> artists = song.getArtistsInStrings();
+		List<String> featuredArtists = song.getFeaturedArtistsInStrings();
+		List<String> remixers = song.getRemixersInStrings();
+		
+		fullName = fullName.concat(artists.toString());
+		
+		if (featuredArtists.size() > 0) {
+			fullName = fullName.concat(" con ");
+			fullName = fullName.concat(featuredArtists.toString());
+		}
+		
+		fullName = fullName.concat(" - ");
+		fullName = fullName.concat(song.getTitle());
+		
+		if (remixers.size() > 0) {
+			fullName = fullName.concat(" (");
+			fullName = fullName.concat(remixers.toString());
+			fullName = fullName.concat(" Remix)");
+		}
+		
+		SongItem songItem = new SongItem(fullName, song.getSongId());
+		return songItem;
+	}
+	
+	public static List<SongItem> songsToItems(List<Song> songs) {
+		return songs.stream().map(song -> songToItem(song)).toList();
+	}
+	
+	//artists
+	public static ArtistItem artistToItem(Artist artist) {
+		return new ArtistItem(artist.getArtistName(), artist.getArtistId());
+	}
+	
+	public static List<ArtistItem> artistsToItems(List<Artist> artists) {
+		return artists.stream().map(a -> artistToItem(a)).toList();
+	}
+	
+	//albums
+	public static CompilationAlbumDTO compilationAlbumToDTO(CompilationAlbum album) {
+		CompilationAlbumDTO albumDTO = new CompilationAlbumDTO();
+		albumDTO.setId(album.getAlbumId());
+		albumDTO.setTitle(album.getTitle());
+		albumDTO.setReleaseDate(album.getReleaseDateInString());
+		albumDTO.setCatalogNumber(album.getCatalogNumber());
+		albumDTO.setLength(album.getLength());
+		albumDTO.setNumberOfSongs(album.getNumberOfSongs());
+		List<Song> songs = album.getSongs().values().stream().toList();
+		albumDTO.setSongs(Converter.songsToItems(songs));
+		albumDTO.setCompilationType(album.getCompilationType());
+		
+		return albumDTO;
+	}
+	
+	public static ArtistAlbumDTO artistAlbumToDTO(ArtistAlbum album) {
+		ArtistAlbumDTO albumDTO = new ArtistAlbumDTO();
+		albumDTO.setId(album.getAlbumId());
+		albumDTO.setTitle(album.getTitle());
+		albumDTO.setReleaseDate(album.getReleaseDateInString());
+		albumDTO.setCatalogNumber(album.getCatalogNumber());
+		albumDTO.setLength(album.getLength());
+		albumDTO.setNumberOfSongs(album.getNumberOfSongs());
+		List<Song> songs = album.getSongs().values().stream().toList();
+		albumDTO.setSongs(Converter.songsToItems(songs));
+		List<ArtistItem> artists = Converter.artistsToItems(album.getArtists().stream().toList());
+		albumDTO.setArtists(artists);
+		
+		return albumDTO;
 	}
 }
