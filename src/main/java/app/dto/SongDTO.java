@@ -2,16 +2,21 @@ package app.dto;
 
 import java.util.List;
 
+import app.enumerate.Genre;
+
 public class SongDTO {
 	
 	private Integer songId;
 	private String title;
 	private String releaseDate;
-	private List<String> artists;
-	private List<String> featuredArtists;
-	private List<String> remixers;
-	private String genre;
+	private List<ArtistItem> artists;
+	private List<ArtistItem> featuredArtists;
+	private List<ArtistItem> remixers;
+	private Genre genre;
+	private String genreName;
 	private String length;
+	private int lengthMinutes;
+	private int lengthSeconds;
 	private String catalogNumber;
 	
 	public Integer getSongId() {
@@ -32,35 +37,53 @@ public class SongDTO {
 	public void setReleaseDate(String releaseDate) {
 		this.releaseDate = releaseDate;
 	}
-	public List<String> getArtists() {
+	public List<ArtistItem> getArtists() {
 		return artists;
 	}
-	public void setArtists(List<String> artists) {
+	public void setArtists(List<ArtistItem> artists) {
 		this.artists = artists;
 	}
-	public List<String> getFeaturedArtists() {
+	public List<ArtistItem> getFeaturedArtists() {
 		return featuredArtists;
 	}
-	public void setFeaturedArtists(List<String> featuredArtists) {
+	public void setFeaturedArtists(List<ArtistItem> featuredArtists) {
 		this.featuredArtists = featuredArtists;
 	}
-	public List<String> getRemixers() {
+	public List<ArtistItem> getRemixers() {
 		return remixers;
 	}
-	public void setRemixers(List<String> remixers) {
+	public void setRemixers(List<ArtistItem> remixers) {
 		this.remixers = remixers;
 	}
-	public String getGenre() {
+	public Genre getGenre() {
 		return genre;
 	}
-	public void setGenre(String genre) {
+	public void setGenre(Genre genre) {
 		this.genre = genre;
+	}
+	public String getGenreName() {
+		return genreName;
+	}
+	public void setGenreName(String genre) {
+		this.genreName = genre;
 	}
 	public String getLength() {
 		return length;
 	}
 	public void setLength(String length) {
 		this.length = length;
+	}
+	public int getLengthMinutes() {
+		return lengthMinutes;
+	}
+	public void setLengthMinutes(int lengthMinutes) {
+		this.lengthMinutes = lengthMinutes;
+	}
+	public int getLengthSeconds() {
+		return lengthSeconds;
+	}
+	public void setLengthSeconds(int lengthSeconds) {
+		this.lengthSeconds = lengthSeconds;
 	}
 	public String getCatalogNumber() {
 		return catalogNumber;
