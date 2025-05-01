@@ -103,7 +103,7 @@ public class Song {
 		this.featuredArtists = artists;
 	}
 	
-	public Set<Artist> getremixers() {
+	public Set<Artist> getRemixers() {
 		return remixers;
 	}
 
@@ -149,5 +149,13 @@ public class Song {
 	
 	public String getReleaseDateInString() {
 		return this.releaseDate.format(DateTimeFormatter.ofPattern(DATE_PATTERN));
+	}
+	
+	public int getMinutes() {
+		return this.length / 60;
+	}
+	
+	public int getSeconds() {
+		return this.length % 60;
 	}
 }
