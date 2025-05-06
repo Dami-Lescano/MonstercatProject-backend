@@ -14,6 +14,7 @@ public class CompilationAlbumDTO {
 	private Integer numberOfSongs;
 	
 	private CompilationType compilationType;
+	private String compilationTypeName;
 	private String type = "compilationAlbum";
 
 	public Integer getId() {
@@ -78,6 +79,14 @@ public class CompilationAlbumDTO {
 
 	public void setCompilationType(CompilationType compilationType) {
 		this.compilationType = compilationType;
+	}
+	
+	public String getCompilationTypeName() {
+		return compilationTypeName;
+	}
+
+	public void setCompilationTypeName(String compilationTypeName) {
+		this.compilationTypeName = compilationTypeName;
 	}
 
 	public String getType() {

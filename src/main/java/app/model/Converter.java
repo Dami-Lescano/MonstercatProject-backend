@@ -1,5 +1,6 @@
 package app.model;
 
+import java.util.Iterator;
 import java.util.List;
 
 import app.dto.ArtistAlbumDTO;
@@ -47,33 +48,55 @@ public abstract class Converter {
 	}
 	
 	public static SongItem songToItem(Song song) {
-		String fullName = "";
-		List<String> artists = song.getArtistsInStrings();
-		List<String> featuredArtists = song.getFeaturedArtistsInStrings();
-		List<String> remixers = song.getRemixersInStrings();
-		
-		fullName = fullName.concat(artists.toString());
-		
-		if (featuredArtists.size() > 0) {
-			fullName = fullName.concat(" con ");
-			fullName = fullName.concat(featuredArtists.toString());
-		}
-		
-		fullName = fullName.concat(" - ");
-		fullName = fullName.concat(song.getTitle());
-		
-		if (remixers.size() > 0) {
-			fullName = fullName.concat(" (");
-			fullName = fullName.concat(remixers.toString());
-			fullName = fullName.concat(" Remix)");
-		}
-		
-		SongItem songItem = new SongItem(fullName, song.getSongId());
+		SongItem songItem = new SongItem(songFullName(song), song.getSongId());
 		return songItem;
 	}
 	
 	public static List<SongItem> songsToItems(List<Song> songs) {
 		return songs.stream().map(song -> songToItem(song)).toList();
+	}
+	
+	private static String songFullName(Song song) {
+		StringBuilder sb = new StringBuilder();
+		
+		List<String> artists = song.getArtistsInStrings();
+		List<String> featuredArtists = song.getFeaturedArtistsInStrings();
+		List<String> remixers = song.getRemixersInStrings();
+		
+		concatArtists(artists, sb);
+		
+		sb.append(" - ");
+		sb.append(song.getTitle());
+		
+		if (featuredArtists.size() > 0) {
+			sb.append(" (con ");
+			concatArtists(featuredArtists, sb);
+			sb.append(")");
+		}
+		
+		if (remixers.size() > 0) {
+			sb.append(" (");
+			concatArtists(remixers, sb);
+			sb.append(" Remix)");
+		}
+		
+		return sb.toString();
+	}
+	
+	private static void concatArtists(List<String> artists, StringBuilder sb) {
+		for (int i = 0; i < artists.size(); i++) {
+			if (i == 0) {
+				sb.append(artists.get(i));
+			}
+			else if (i == artists.size() - 1) {
+				sb.append(" & ");
+				sb.append(artists.get(i));
+			}
+			else {
+				sb.append(", ");
+				sb.append(artists.get(i));
+			}
+		}
 	}
 	
 	//artists
@@ -97,6 +120,7 @@ public abstract class Converter {
 		List<Song> songs = album.getSongs().values().stream().toList();
 		albumDTO.setSongs(Converter.songsToItems(songs));
 		albumDTO.setCompilationType(album.getCompilationType());
+		albumDTO.setCompilationTypeName(album.getCompilationType().getTipo());
 		
 		return albumDTO;
 	}
