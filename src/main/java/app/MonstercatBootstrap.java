@@ -10,6 +10,7 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import app.builder.ArtistAlbumBuilder;
 import app.builder.ArtistBuilder;
 import app.builder.CompilationAlbumBuilder;
 import app.builder.SongBuilder;
@@ -17,9 +18,10 @@ import app.enumerate.CompilationType;
 import app.enumerate.Country;
 import app.enumerate.Genre;
 import app.model.Artist;
+import app.model.ArtistAlbum;
 import app.model.CompilationAlbum;
 import app.model.Song;
-import app.repository.CompilationAlbumRepository;
+import app.repository.AlbumRepository;
 import app.repository.ArtistRepository;
 import app.repository.SongRepository;
 
@@ -33,7 +35,7 @@ class MonstercatBootstrap implements InitializingBean {
 	private ArtistRepository artistRepository;
 	
 	@Autowired
-	private CompilationAlbumRepository albumRepository;
+	private AlbumRepository albumRepository;
 	
 	//Songs list
 	private Set<Song> songs;
@@ -41,8 +43,11 @@ class MonstercatBootstrap implements InitializingBean {
 	//Artists list
 	private Set<Artist> artists;
 	
-	//Compilatons list
+	//Compilatons Albums list
 	private Set<CompilationAlbum> compilationAlbums;
+	
+	//Artists Albums list
+	private Set<ArtistAlbum> artistsAlbums;
 	
 	//Artists          private Artist x;
 	private Artist ephixa;
@@ -58,7 +63,7 @@ class MonstercatBootstrap implements InitializingBean {
 	private Artist matduke;
 	private Artist noisestorm;
 	private Artist obsidia;
-	private Artist projectFortySix;
+	private Artist project46;
 	private Artist twoThirds;
 	private Artist matthewSartori;
 	
@@ -138,11 +143,27 @@ class MonstercatBootstrap implements InitializingBean {
 	private Song outsideThisWorld;
 	private Song pumpIt;
 	
+	//Christian The Liion EP
+	private Song astronautFunk;
+	private Song knucklesAndBrokenGoggles;
+	private Song supercool;
+	private Song winter;
+	
+	//Albums
+	
 	//Monstercat Compilations		private CompilationAlbum x;
 	private CompilationAlbum launchWeek;
 	private CompilationAlbum earlyStage;
 	private CompilationAlbum momentum;
 	private CompilationAlbum identity;
+	
+	//Best of Year Compilation
+	private CompilationAlbum bestOf2011;
+	
+	//Artists Albums		private ArtistAlbum x;
+	private ArtistAlbum limitlessEP;
+	private ArtistAlbum christianTheLionEP;
+	private ArtistAlbum keepingItSurrealEP;
 	
 	/*future songs
 	private Song flight;
@@ -253,13 +274,13 @@ class MonstercatBootstrap implements InitializingBean {
 				.build();
 		artists.add(obsidia);
 		
-		projectFortySix = new ArtistBuilder()
+		project46 = new ArtistBuilder()
 				.withArtistName("Project 46")
 				.withRealName(new ArrayList<String>(Arrays.asList("Thomas Edward Shaw", "Ryan Leonard Henderson")))
 				.withCountry(Country.CANADA)
 				.withInitYear(2011)
 				.build();
-		artists.add(projectFortySix);
+		artists.add(project46);
 		
 		twoThirds = new ArtistBuilder()
 				.withArtistName("TwoThirds")
@@ -485,7 +506,7 @@ class MonstercatBootstrap implements InitializingBean {
 		
 		dreaming = new SongBuilder()
 				.withTitle("Dreaming")
-				.withArtists(new HashSet<Artist>(Arrays.asList(projectFortySix, fiveteenGrams)))
+				.withArtists(new HashSet<Artist>(Arrays.asList(project46, fiveteenGrams)))
 				.withFeaturedArtists(new HashSet<Artist>(Arrays.asList(matthewSartori)))
 				.withGenre(Genre.HOUSE)
 				.withLength(5, 20)
@@ -614,7 +635,7 @@ class MonstercatBootstrap implements InitializingBean {
 		
 		limitless = new SongBuilder()
 				.withTitle("Limitless")
-				.withArtists(new HashSet<Artist>(Arrays.asList(projectFortySix)))
+				.withArtists(new HashSet<Artist>(Arrays.asList(project46)))
 				.withGenre(Genre.HOUSE)
 				.withLength(7, 0)
 				.withReleaseDate(LocalDate.of(2011, 10, 6))
@@ -714,7 +735,7 @@ class MonstercatBootstrap implements InitializingBean {
 		
 		slide = new SongBuilder()
 				.withTitle("Slide")
-				.withArtists(new HashSet<Artist>(Arrays.asList(projectFortySix)))
+				.withArtists(new HashSet<Artist>(Arrays.asList(project46)))
 				.withGenre(Genre.HOUSE)
 				.withLength(7, 3)
 				.withReleaseDate(LocalDate.of(2011, 11, 2))
@@ -743,7 +764,7 @@ class MonstercatBootstrap implements InitializingBean {
 		
 		deadline = new SongBuilder()
 				.withTitle("Deadline")
-				.withArtists(new HashSet<Artist>(Arrays.asList(projectFortySix, gemellini)))
+				.withArtists(new HashSet<Artist>(Arrays.asList(project46, gemellini)))
 				.withGenre(Genre.HOUSE)
 				.withLength(6, 20)
 				.withReleaseDate(LocalDate.of(2011, 12, 16))
@@ -790,7 +811,7 @@ class MonstercatBootstrap implements InitializingBean {
 		
 		crazy = new SongBuilder()
 				.withTitle("Crazy")
-				.withArtists(new HashSet<Artist>(Arrays.asList(projectFortySix, gemellini)))
+				.withArtists(new HashSet<Artist>(Arrays.asList(project46, gemellini)))
 				.withFeaturedArtists(new HashSet<Artist>(Arrays.asList(corinneLee)))
 				.withGenre(Genre.HOUSE)
 				.withLength(7, 6)
@@ -894,8 +915,10 @@ class MonstercatBootstrap implements InitializingBean {
 		*/
 	}
 	
-	private void initMonstercatAlbums() {
+	private void initCompilationAlbums() {
 		compilationAlbums = new HashSet<CompilationAlbum>();
+		
+		//Monstercat Compilations
 		
 		launchWeek = new CompilationAlbumBuilder()
 				.withTitle("Monstercat 001 - Launch Week")
@@ -981,13 +1004,45 @@ class MonstercatBootstrap implements InitializingBean {
 		identity.addSong(pumpIt);
 		compilationAlbums.add(identity);
 		
+		//Best of Year Compilations
+		
+		bestOf2011 = new CompilationAlbumBuilder()
+				.withTitle("Monstercat - Best of 2011")
+				.withReleaseDate(LocalDate.of(2012, 1, 6))
+				.withCompilationType(CompilationType.BEST_OF_YEAR)
+				.withCatalogNumber("MCB001")
+				.build();
+		bestOf2011.addSong(deadline);
+		bestOf2011.addSong(coldBloodAndIceCreamCones);
+		bestOf2011.addSong(slide);
+		bestOf2011.addSong(airwaves);
+		bestOf2011.addSong(cloakAndDagger);
+		bestOf2011.addSong(hello);
+		//bestOf2011.addSong();
+		bestOf2011.addSong(someWobbles);
+		bestOf2011.addSong(anotherWorld);
+		bestOf2011.addSong(insomnia);
+		bestOf2011.addSong(fullFocus);
+		bestOf2011.addSong(fullGrizzly);
+		bestOf2011.addSong(dubstepKilledRockAndRoll);
+		bestOf2011.addSong(theTechnician);
+		bestOf2011.addSong(ridingTheStorm);
+		bestOf2011.addSong(lightPollution);
+		bestOf2011.addSong(audiocidity);
+		bestOf2011.addSong(atlas);
+		bestOf2011.addSong(runAwayFromMe);
+		bestOf2011.addSong(captivating);
+		compilationAlbums.add(bestOf2011);
+		
+		//Best of Genre Compilations
+		
 		albumRepository.saveAll(compilationAlbums);
 		
 		/*
 		album = new CompilationAlbumBuilder()
 				.withTitle("x")
 				.withReleaseDate(LocalDate.of(, , ))
-				.withCompilationType(CompilatonType.MONSTERCAT_COMPILATION)
+				.withCompilationType(CompilationType.MONSTERCAT_COMPILATION)
 				.withCatalogNumber("MC")
 				.build();
 		album.addSong(x);
@@ -995,11 +1050,53 @@ class MonstercatBootstrap implements InitializingBean {
 		*/
 	}
 	
+	private void initArtistsAlbum() {
+		artistsAlbums = new HashSet<ArtistAlbum>();
+		
+		limitlessEP = new ArtistAlbumBuilder()
+				.withTitle("Limitless EP")
+				.withReleaseDate(LocalDate.of(2011, 11, 14))
+				.withCatalogNumber("MCEP001")
+				.build();
+		limitlessEP.addArtist(project46);
+		limitlessEP.addSong(crazy);
+		limitlessEP.addSong(limitless);
+		limitlessEP.addSong(slide);
+		artistsAlbums.add(limitlessEP);
+		
+		/*christianTheLionEP = new ArtistAlbumBuilder()
+				.withTitle("Christian The Lion EP")
+				.withReleaseDate(LocalDate.of(2011, 11, 28))
+				.withCatalogNumber("MCEP002")
+				.build();
+		christianTheLionEP.addArtist(stephenWalking);
+		christianTheLionEP.addSong(astronautFunk);
+		christianTheLionEP.addSong(strongArm);
+		christianTheLionEP.addSong(knucklesAndBrokenGoggles);
+		christianTheLionEP.addSong(supercool);
+		christianTheLionEP.addSong(winter);
+		artistsAlbums.add(christianTheLionEP);*/
+		
+		albumRepository.saveAll(artistsAlbums);
+		
+		/*
+		xEP = new ArtistAlbumBuilder()
+				.withTitle()
+				.withReleaseDate(LocalDate.of(, , ))
+				.withCatalogNumber()
+				.build();
+		xEP.addArtist();
+		xEP.addSong();
+		artistsAlbums.add(xEP);
+		*/
+	}
+	
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		initArtists();
 		initSongs();
-		initMonstercatAlbums();
+		initCompilationAlbums();
+		initArtistsAlbum();
 	}
 
 }
