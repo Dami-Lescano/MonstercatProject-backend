@@ -31,6 +31,11 @@ public class SongBuilder {
 		return this;
 	}
 	
+	public SongBuilder withRemixers(Set<Artist> remixers) {
+		this.song.setRemixers(remixers);
+		return this;
+	}
+	
 	public SongBuilder withLength(int minutes, int seconds) {
 		int length = Converter.lengthToInt(minutes, seconds);
 		this.song.setLength(length);

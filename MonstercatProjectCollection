@@ -1,0 +1,467 @@
+type: collection.insomnia.rest/5.0
+name: MonstercatProject
+meta:
+  id: wrk_26e81cdf22e547eca1f1dfd51884113e
+  created: 1734147281580
+  modified: 1734147281580
+collection:
+  - name: Songs
+    meta:
+      id: fld_05a5826bbd5040f585922c846889872b
+      created: 1734147331747
+      modified: 1734387241132
+      sortKey: -1734147331748
+    children:
+      - url: localhost:8080/api/song
+        name: All songs
+        meta:
+          id: req_841abd475a1949de8a63461c1b3b4366
+          created: 1734147335078
+          modified: 1734147418756
+          isPrivate: false
+          sortKey: -1734147335078
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/10.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8080/api/song/info/55
+        name: song by id
+        meta:
+          id: req_ba762e3b4d454984bcd07f514eb1954c
+          created: 1734383085151
+          modified: 1743026634150
+          isPrivate: false
+          sortKey: -1734383085151
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/10.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8080/api/song
+        name: create song
+        meta:
+          id: req_7331bc2ddfa54c57a9197a9de513a1e1
+          created: 1734383410256
+          modified: 1743020544950
+          isPrivate: false
+          sortKey: -1734383410256
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"title": "Ideekay",
+            	"artists": [{
+            		"artistId": 3
+            	}],
+            	"releaseDate": "2012-05-18",
+            	"genre": "MOOMBAHTON",
+            	"length": 263,
+            	"catalogNumber": "MCS010"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/10.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8080/api/song
+        name: modify song
+        meta:
+          id: req_0e2b3fde8c974337b6f60b9a22824c3f
+          created: 1734385057438
+          modified: 1734385352181
+          isPrivate: false
+          sortKey: -1734385057438
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"songId": 3,
+            	"title": "Words",
+            	"releaseDate": "2015-10-26",
+            	"genre": "DRUM_AND_BASS",
+            	"length": 276,
+            	"catalogNumber": "MCS502",
+            	"lengthInString": "4:36"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/10.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8080/api/song/4
+        name: delete song
+        meta:
+          id: req_b6a848dbeffb49f29ca2b823d9d3269e
+          created: 1734385382297
+          modified: 1734385409962
+          isPrivate: false
+          sortKey: -1734385382297
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/10.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Enums
+    meta:
+      id: fld_49fb95ac80d747f8a7c261af4bd8f52d
+      created: 1734390113409
+      modified: 1743192515280
+      sortKey: -1734390113409
+    children:
+      - url: localhost:8080/api/enums/genres
+        name: all genres
+        meta:
+          id: req_26c64a31a3eb4f96bc4e29d4d8afebd2
+          created: 1734390145971
+          modified: 1743192590098
+          isPrivate: false
+          sortKey: -1734390145971
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/10.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8080/api/enums/countries
+        name: all countries
+        meta:
+          id: req_05d7bcb180df437ebc68b17e17cf4e72
+          created: 1743192520107
+          modified: 1743192662059
+          isPrivate: false
+          sortKey: -1743192520107
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Artists
+    meta:
+      id: fld_4d4b2005b62c49afa66e3b6a5c647e6e
+      created: 1738713425725
+      modified: 1738713425725
+      sortKey: -1738713425725
+    children:
+      - url: localhost:8080/api/artist/1
+        name: artist by id
+        meta:
+          id: req_4a70258e431a47dd98814fe80ee2459d
+          created: 1738713431254
+          modified: 1739906501072
+          isPrivate: false
+          sortKey: -1738713431254
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/10.3.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8080/api/artist
+        name: all artists
+        meta:
+          id: req_9506b4f2389c4a52aa42c3f862842812
+          created: 1738717468407
+          modified: 1738717482529
+          isPrivate: false
+          sortKey: -1738717468407
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/10.3.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8080/api/artist
+        name: create artist
+        meta:
+          id: req_531f32ff2c8e4255995d97ffb01c966a
+          created: 1738717806983
+          modified: 1738718266181
+          isPrivate: false
+          sortKey: -1738717806983
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"artistName": "Hyper Potions",
+            	"realName": [
+            		"Ian Masato Tsuchiura",
+            		"Kevin Christopher Villecco"
+            	],
+            	"country": "Estados Unidos",
+            	"initYear": "2015"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/10.3.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8080/api/artist
+        name: modify artist
+        meta:
+          id: req_5f7d812ffbe748d2b4ee5d2034bf2be9
+          created: 1738718341530
+          modified: 1738718392147
+          isPrivate: false
+          sortKey: -1738718341530
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"artistId": 6,
+            	"artistName": "Hyper Potions",
+            	"realName": [
+            		"Ian Masato Tsuchiura"
+            	],
+            	"birthDate": null,
+            	"country": "Estados Unidos",
+            	"initYear": "2015",
+            	"endYear": null
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/10.3.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8080/api/artist/1
+        name: delete artist
+        meta:
+          id: req_8b6cdc6a83334f3f9fe352c45a4864c7
+          created: 1738718421945
+          modified: 1738718465528
+          isPrivate: false
+          sortKey: -1738718421945
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/10.3.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8080/api/artist/25/songs
+        name: all artist songs
+        meta:
+          id: req_aa416e245e3a4b18b8ac24eef15d96f4
+          created: 1740689510357
+          modified: 1742515814521
+          isPrivate: false
+          sortKey: -1740689510357
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/10.3.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8080/api/artist/byName/?name=dami
+        name: artist by name
+        meta:
+          id: req_7f9b71142688483b9e7d19549516aee3
+          created: 1740691530507
+          modified: 1743193172260
+          isPrivate: false
+          sortKey: -1740691530507
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/10.3.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8080/api/artist/namesAndIds
+        name: all artists names and ids
+        meta:
+          id: req_2f6a19864a914de794904b7a7a50af27
+          created: 1743013135220
+          modified: 1743013179714
+          isPrivate: false
+          sortKey: -1743013135220
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Albums
+    meta:
+      id: fld_92bd79aa64d640ddbe741f1f94e02e71
+      created: 1740093879518
+      modified: 1740093879518
+      sortKey: -1740093879518
+    children:
+      - url: localhost:8080/api/album
+        name: all albums
+        meta:
+          id: req_aca7e1d9199941cc99da4baa45681c3f
+          created: 1740093895758
+          modified: 1740093915297
+          isPrivate: false
+          sortKey: -1740093895758
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/10.3.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8080/api/album/4
+        name: album by id
+        meta:
+          id: req_dd328e6caaff42a88832c6ad1c8e92de
+          created: 1740508626611
+          modified: 1741726398433
+          isPrivate: false
+          sortKey: -1740508626611
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/10.3.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8080/api/album/names
+        name: all albums names
+        meta:
+          id: req_4865c94794864173be4b3c1630541eb1
+          created: 1741473493556
+          modified: 1741473520175
+          isPrivate: false
+          sortKey: -1741473493556
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/10.3.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_96482d68c0bac54f6cac959ca09fc1cd108933e2
+    created: 1734147281587
+    modified: 1734147281587
+environments:
+  name: Base Environment
+  meta:
+    id: env_96482d68c0bac54f6cac959ca09fc1cd108933e2
+    created: 1734147281584
+    modified: 1734147281584
+    isPrivate: false
