@@ -76,4 +76,7 @@ public class Artist {
 	public void setEndYear(Integer endYear) {
 		this.endYear = endYear;
 	}
+	public String getCountryName() {
+		return this.country.getNombre();
+	}
 }
