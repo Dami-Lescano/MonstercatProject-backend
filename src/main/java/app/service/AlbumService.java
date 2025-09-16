@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import app.dto.AlbumTitleAndIdDTO;
 import app.dto.ArtistAlbumDTO;
 import app.dto.CompilationAlbumDTO;
 import app.model.Album;
@@ -35,6 +36,12 @@ public class AlbumService extends GenericService<Album>{
 		return names;
 	}
 	
+	public List<AlbumTitleAndIdDTO> albumsContainingSong(Integer songId) {
+		List<Album> albums = albumRepository.findAll();
+		List<AlbumTitleAndIdDTO> filteredAlbums = albums.stream().filter(a -> a.containsSong(songId)).map(a -> Converter.AlbumToAlbumTitleAndIdDTO(a)).toList();
+		return filteredAlbums;
+	}
+	
 	//CompilationAlbum
 	
 	public CompilationAlbumDTO compilationAlbumInfo(Integer id) {
@@ -59,4 +66,5 @@ public class AlbumService extends GenericService<Album>{
 		List<ArtistAlbumDTO> albumDTOs = albums.stream().map(a -> Converter.artistAlbumToDTO(a)).toList();
 		return albumDTOs;
 	}
+
 }

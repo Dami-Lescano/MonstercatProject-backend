@@ -418,6 +418,7 @@ class MonstercatBootstrap implements InitializingBean {
 		
 		songs = new HashSet<Song>();
 		
+		//Monstercat Compilation Albums
 		//001 - Launch Week
 		
 		dubstepKilledRockAndRoll = new SongBuilder()
@@ -900,6 +901,45 @@ class MonstercatBootstrap implements InitializingBean {
 				.buildSong();
 		songs.add(pumpIt);
 		
+		//Artists Albums
+		//Christian The Lion EP
+		
+		astronautFunk = new SongBuilder()
+				.withTitle("Astronaut Funk")
+				.withArtists(new HashSet<Artist>(Arrays.asList(stephenWalking)))
+				.withGenre(Genre.DUBSTEP)
+				.withLength(4, 49)
+				.withReleaseDate(LocalDate.of(2011, 11, 28))
+				.buildSong();
+		songs.add(astronautFunk);
+		
+		knucklesAndBrokenGoggles = new SongBuilder()
+				.withTitle("Knuckles and Broken Goggles")
+				.withArtists(new HashSet<Artist>(Arrays.asList(stephenWalking)))
+				.withGenre(Genre.DUBSTEP)
+				.withLength(4, 36)
+				.withReleaseDate(LocalDate.of(2011, 11, 28))
+				.buildSong();
+		songs.add(knucklesAndBrokenGoggles);
+		
+		supercool = new SongBuilder()
+				.withTitle("Supercool!")
+				.withArtists(new HashSet<Artist>(Arrays.asList(stephenWalking)))
+				.withGenre(Genre.MOOMBAHTON)
+				.withLength(3, 9)
+				.withReleaseDate(LocalDate.of(2011, 11, 28))
+				.buildSong();
+		songs.add(supercool);
+		
+		winter = new SongBuilder()
+				.withTitle("Winter")
+				.withArtists(new HashSet<Artist>(Arrays.asList(stephenWalking)))
+				.withGenre(Genre.DUBSTEP)
+				.withLength(4, 13)
+				.withReleaseDate(LocalDate.of(2011, 11, 28))
+				.buildSong();
+		songs.add(winter);
+		
 		songRepository.saveAll(songs);
 		
 		/*
@@ -1064,7 +1104,7 @@ class MonstercatBootstrap implements InitializingBean {
 		limitlessEP.addSong(slide);
 		artistsAlbums.add(limitlessEP);
 		
-		/*christianTheLionEP = new ArtistAlbumBuilder()
+		christianTheLionEP = new ArtistAlbumBuilder()
 				.withTitle("Christian The Lion EP")
 				.withReleaseDate(LocalDate.of(2011, 11, 28))
 				.withCatalogNumber("MCEP002")
@@ -1075,7 +1115,7 @@ class MonstercatBootstrap implements InitializingBean {
 		christianTheLionEP.addSong(knucklesAndBrokenGoggles);
 		christianTheLionEP.addSong(supercool);
 		christianTheLionEP.addSong(winter);
-		artistsAlbums.add(christianTheLionEP);*/
+		artistsAlbums.add(christianTheLionEP);
 		
 		albumRepository.saveAll(artistsAlbums);
 		

@@ -3,6 +3,7 @@ package app.model;
 import java.util.Iterator;
 import java.util.List;
 
+import app.dto.AlbumTitleAndIdDTO;
 import app.dto.ArtistAlbumDTO;
 import app.dto.ArtistItem;
 import app.dto.CompilationAlbumDTO;
@@ -137,6 +138,14 @@ public abstract class Converter {
 		albumDTO.setSongs(Converter.songsToItems(songs));
 		List<ArtistItem> artists = Converter.artistsToItems(album.getArtists().stream().toList());
 		albumDTO.setArtists(artists);
+		
+		return albumDTO;
+	}
+	
+	public static AlbumTitleAndIdDTO AlbumToAlbumTitleAndIdDTO(Album album) {
+		AlbumTitleAndIdDTO albumDTO = new AlbumTitleAndIdDTO();
+		albumDTO.setId(album.getAlbumId());
+		albumDTO.setTitle(album.getTitle());
 		
 		return albumDTO;
 	}

@@ -100,4 +100,8 @@ public abstract class Album {
 	public String getReleaseDateInString() {
 		return this.releaseDate.format(DateTimeFormatter.ofPattern(DATE_PATTERN));
 	}
+	
+	public Boolean containsSong(Integer songId) {
+		return songs.values().stream().anyMatch(s -> s.getSongId() == songId);
+	}
 }

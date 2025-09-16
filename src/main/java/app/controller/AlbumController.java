@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import app.dto.AlbumTitleAndIdDTO;
 import app.dto.ArtistAlbumDTO;
 import app.dto.CompilationAlbumDTO;
 import app.model.Album;
@@ -29,6 +30,12 @@ public class AlbumController extends GenericController<Album>{
 	@GetMapping("/names")
 	private ResponseEntity<List<String>> albumsNames() {
 		List<String> response = this.albumService.albumsNames();
+		return ResponseEntity.ok(response);
+	}
+	
+	@GetMapping("/albumsContainingSong/{songId}")
+	private ResponseEntity<List<AlbumTitleAndIdDTO>> albumsContainingSong(@PathVariable Integer songId) {
+		List<AlbumTitleAndIdDTO> response = this.albumService.albumsContainingSong(songId);
 		return ResponseEntity.ok(response);
 	}
 	
