@@ -1,11 +1,13 @@
 package app.service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import app.dto.SongDTO;
+import app.dto.SongFiltersDTO;
 import app.dto.SongItem;
 import app.enumerate.Genre;
 import app.model.Converter;
@@ -60,6 +62,23 @@ public class SongService extends GenericService<Song>{
 	
 	public List<Song> findByArtists(List<Integer> artistId){
 		return songRepository.findAllByArtistsArtistIdInOrFeaturedArtistsArtistIdInOrRemixersArtistIdIn(artistId, artistId, artistId);
+	}
+
+	public List<SongItem> songsFilter(SongFiltersDTO filters) {
+		
+		List<Song> songs = songRepository.findAllByTitleContainsOrArtistsArtistIdInOrFeaturedArtistsArtistIdInOrRemixersArtistIdInOrGenreInOrReleaseDateBetweenOrLengthBetweenOrCatalogNumberContains(
+			filters.getTitle(),
+			filters.getArtistsId(),
+			filters.getFeaturedArtistsId(),
+			filters.getRemixersId(),
+			filters.getGenres(),
+			filters.getMinDate(),
+			filters.getMaxDate(),
+			filters.getMinLength(),
+			filters.getMaxLength(),
+			filters.getCatalogNumber()
+		); 
+		return Converter.songsToItems(songs);
 	}
 	
 }

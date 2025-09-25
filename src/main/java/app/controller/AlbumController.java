@@ -33,12 +33,6 @@ public class AlbumController extends GenericController<Album>{
 		return ResponseEntity.ok(response);
 	}
 	
-	@GetMapping("/albumsContainingSong/{songId}")
-	private ResponseEntity<List<AlbumTitleAndIdDTO>> albumsContainingSong(@PathVariable Integer songId) {
-		List<AlbumTitleAndIdDTO> response = this.albumService.albumsContainingSong(songId);
-		return ResponseEntity.ok(response);
-	}
-	
 	//CompilationAlbum
 	
 	@GetMapping("/compilationAlbum/list")
@@ -53,6 +47,12 @@ public class AlbumController extends GenericController<Album>{
 		return ResponseEntity.ok(response);
 	}
 	
+	@GetMapping("/compilationAlbumsContainingSong/{songId}")
+	private ResponseEntity<List<AlbumTitleAndIdDTO>> compilationAlbumsContainingSong(@PathVariable Integer songId) {
+		List<AlbumTitleAndIdDTO> response = this.albumService.compilationAlbumsContainingSong(songId);
+		return ResponseEntity.ok(response);
+	}
+	
 	//ArtistAlbum
 	
 	@GetMapping("/artistAlbum/list")
@@ -64,6 +64,12 @@ public class AlbumController extends GenericController<Album>{
 	@GetMapping("/artistAlbum/info/{id}")
 	private ResponseEntity<ArtistAlbumDTO> artistAlbumInfo(@PathVariable Integer id) {
 		ArtistAlbumDTO response = this.albumService.artistAlbumInfo(id);
+		return ResponseEntity.ok(response);
+	}
+	
+	@GetMapping("/artistAlbumsContainingSong/{songId}")
+	private ResponseEntity<List<AlbumTitleAndIdDTO>> artistAlbumsContainingSong(@PathVariable Integer songId) {
+		List<AlbumTitleAndIdDTO> response = this.albumService.artistAlbumsContainingSong(songId);
 		return ResponseEntity.ok(response);
 	}
 }

@@ -36,12 +36,6 @@ public class AlbumService extends GenericService<Album>{
 		return names;
 	}
 	
-	public List<AlbumTitleAndIdDTO> albumsContainingSong(Integer songId) {
-		List<Album> albums = albumRepository.findAll();
-		List<AlbumTitleAndIdDTO> filteredAlbums = albums.stream().filter(a -> a.containsSong(songId)).map(a -> Converter.AlbumToAlbumTitleAndIdDTO(a)).toList();
-		return filteredAlbums;
-	}
-	
 	//CompilationAlbum
 	
 	public CompilationAlbumDTO compilationAlbumInfo(Integer id) {
@@ -55,6 +49,12 @@ public class AlbumService extends GenericService<Album>{
 		return albumDTOs;
 	}
 	
+	public List<AlbumTitleAndIdDTO> compilationAlbumsContainingSong(Integer songId) {
+		List<CompilationAlbum> albums = compilationAlbumRepository.findAll();
+		List<AlbumTitleAndIdDTO> filteredAlbums = albums.stream().filter(a -> a.containsSong(songId)).map(a -> Converter.AlbumToAlbumTitleAndIdDTO(a)).toList();
+		return filteredAlbums;
+	}
+	
 	//ArtistAlbum
 	public ArtistAlbumDTO artistAlbumInfo(Integer id) {
 		ArtistAlbum album = artistAlbumRepository.findByAlbumId(id);
@@ -65,6 +65,12 @@ public class AlbumService extends GenericService<Album>{
 		List<ArtistAlbum> albums = artistAlbumRepository.findAll();
 		List<ArtistAlbumDTO> albumDTOs = albums.stream().map(a -> Converter.artistAlbumToDTO(a)).toList();
 		return albumDTOs;
+	}
+	
+	public List<AlbumTitleAndIdDTO> artistAlbumsContainingSong(Integer songId) {
+		List<ArtistAlbum> albums = artistAlbumRepository.findAll();
+		List<AlbumTitleAndIdDTO> filteredAlbums = albums.stream().filter(a -> a.containsSong(songId)).map(a -> Converter.AlbumToAlbumTitleAndIdDTO(a)).toList();
+		return filteredAlbums;
 	}
 
 }

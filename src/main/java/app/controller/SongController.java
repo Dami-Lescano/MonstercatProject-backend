@@ -6,10 +6,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import app.dto.SongDTO;
+import app.dto.SongFiltersDTO;
 import app.dto.SongItem;
 import app.enumerate.Genre;
 import app.model.Song;
@@ -55,6 +57,12 @@ public class SongController extends GenericController<Song> {
     @GetMapping("/songsItems/genre/{genre}")
     public ResponseEntity<List<SongItem>> songsItemsByGenre(@PathVariable Genre genre){
     	List<SongItem> response = this.songService.songsItemsByGenre(genre);
+    	return ResponseEntity.ok(response);
+    }
+    
+    @GetMapping("/filter")
+    public ResponseEntity<List<SongItem>> songsFilter(@RequestBody SongFiltersDTO filters){
+    	List<SongItem> response = this.songService.songsFilter(filters);
     	return ResponseEntity.ok(response);
     }
 }
